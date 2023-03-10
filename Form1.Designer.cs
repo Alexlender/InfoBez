@@ -55,9 +55,10 @@
             this.textInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.textInput.Location = new System.Drawing.Point(0, 0);
-            this.textInput.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+            this.textInput.Margin = new System.Windows.Forms.Padding(30);
             this.textInput.Multiline = true;
             this.textInput.Name = "textInput";
+            this.textInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textInput.Size = new System.Drawing.Size(374, 269);
             this.textInput.TabIndex = 0;
             this.textInput.Text = "Какой-то текст";
@@ -89,6 +90,7 @@
             this.textOutput.Multiline = true;
             this.textOutput.Name = "textOutput";
             this.textOutput.ReadOnly = true;
+            this.textOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textOutput.Size = new System.Drawing.Size(372, 269);
             this.textOutput.TabIndex = 1;
             // 
@@ -123,7 +125,7 @@
             this.button.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button.Location = new System.Drawing.Point(0, 145);
-            this.button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button.Margin = new System.Windows.Forms.Padding(2);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(750, 47);
             this.button.TabIndex = 0;
@@ -135,7 +137,7 @@
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.progressBar.Location = new System.Drawing.Point(0, 192);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(750, 8);
             this.progressBar.Step = 1;
@@ -149,7 +151,7 @@
             "Кодировать",
             "Декодировать"});
             this.selectedMode.Location = new System.Drawing.Point(25, 101);
-            this.selectedMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectedMode.Margin = new System.Windows.Forms.Padding(2);
             this.selectedMode.Name = "selectedMode";
             this.selectedMode.Size = new System.Drawing.Size(92, 21);
             this.selectedMode.TabIndex = 6;
@@ -157,7 +159,7 @@
             // keyInput
             // 
             this.keyInput.Location = new System.Drawing.Point(25, 58);
-            this.keyInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keyInput.Margin = new System.Windows.Forms.Padding(2);
             this.keyInput.Maximum = new decimal(new int[] {
             1000,
             0,
