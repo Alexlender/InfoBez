@@ -57,6 +57,7 @@ namespace InfoBez
         private void TexBox_Click(object sender, EventArgs e)
         {
             (textInput.Text, textOutput.Text) = (textOutput.Text, textInput.Text);
+            Cesar(textInput, textOutput, (int)keyInput.Value, (Mode)selectedMode.SelectedIndex);
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)

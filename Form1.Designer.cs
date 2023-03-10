@@ -33,12 +33,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textOutput = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.button = new System.Windows.Forms.Button();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.selectedMode = new System.Windows.Forms.ComboBox();
             this.keyInput = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.button = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -60,6 +60,7 @@
             this.textInput.Name = "textInput";
             this.textInput.Size = new System.Drawing.Size(499, 314);
             this.textInput.TabIndex = 0;
+            this.textInput.Text = "Какой-то текст";
             this.textInput.TextChanged += new System.EventHandler(this.textInput_TextChanged);
             // 
             // splitContainer1
@@ -121,6 +122,27 @@
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 2;
             // 
+            // button
+            // 
+            this.button.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button.Location = new System.Drawing.Point(0, 195);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size(1000, 58);
+            this.button.TabIndex = 0;
+            this.button.Text = "Сделать";
+            this.button.UseVisualStyleBackColor = true;
+            this.button.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar.Location = new System.Drawing.Point(0, 253);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(1000, 10);
+            this.progressBar.Step = 1;
+            this.progressBar.TabIndex = 7;
+            // 
             // selectedMode
             // 
             this.selectedMode.FormattingEnabled = true;
@@ -136,9 +158,24 @@
             // keyInput
             // 
             this.keyInput.Location = new System.Drawing.Point(33, 71);
+            this.keyInput.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.keyInput.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
             this.keyInput.Name = "keyInput";
-            this.keyInput.Size = new System.Drawing.Size(49, 22);
+            this.keyInput.Size = new System.Drawing.Size(73, 22);
             this.keyInput.TabIndex = 5;
+            this.keyInput.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -151,32 +188,11 @@
             this.label1.Text = "Ключ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button
-            // 
-            this.button.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button.Location = new System.Drawing.Point(0, 195);
-            this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(1000, 58);
-            this.button.TabIndex = 0;
-            this.button.Text = "Сделать";
-            this.button.UseVisualStyleBackColor = true;
-            this.button.Click += new System.EventHandler(this.button1_Click);
-            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
-            // progressBar
-            // 
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar.Location = new System.Drawing.Point(0, 253);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1000, 10);
-            this.progressBar.Step = 1;
-            this.progressBar.TabIndex = 7;
             // 
             // Form1
             // 
