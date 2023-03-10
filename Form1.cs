@@ -70,8 +70,6 @@ namespace InfoBez
             return false;
         }
 
-
-
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
 

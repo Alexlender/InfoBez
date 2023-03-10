@@ -58,6 +58,7 @@
             this.textInput.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.textInput.Multiline = true;
             this.textInput.Name = "textInput";
+            this.textInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textInput.Size = new System.Drawing.Size(374, 256);
             this.textInput.TabIndex = 0;
             this.textInput.Text = "Какой-то текст";
@@ -89,6 +90,7 @@
             this.textOutput.Multiline = true;
             this.textOutput.Name = "textOutput";
             this.textOutput.ReadOnly = true;
+            this.textOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textOutput.Size = new System.Drawing.Size(372, 256);
             this.textOutput.TabIndex = 1;
             // 
