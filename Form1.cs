@@ -25,16 +25,37 @@ namespace InfoBez
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_WorkDone;
         }
 
-        private void Cesar(TextBox input, TextBox output, int key, Mode mode = Mode.Encode)
+        private void Permutation(TextBox input, TextBox output, List<int> key, Mode mode = Mode.Encode)
         {
            backgroundWorker1.RunWorkerAsync(new List<object>{ input.Text, key, mode});
 
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            Cesar(textInput, textOutput, (int)keyInput.Value, (Mode)selectedMode.SelectedIndex);
+        { 
+            if(CheckKey())
+                Permutation(textInput, textOutput, null, (Mode)selectedMode.SelectedIndex);
         }
+
+        private bool CheckKey()
+        {
+            if (key.Text.GroupBy(x => x).Any(x => x.Count() > 1))
+            {
+                MessageBox.Show("Неверно введён ключ", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!");
+                return false;
+            }
+            foreach (char c in key.Text)
+            {
+                if (int.Parse(c.ToString()) <= 0 || int.Parse(c.ToString()) > key.Text.Length)
+                {
+                    MessageBox.Show("Неверно введён ключ", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
@@ -56,8 +77,8 @@ namespace InfoBez
 
         private void TexBox_Click(object sender, EventArgs e)
         {
+
             (textInput.Text, textOutput.Text) = (textOutput.Text, textInput.Text);
-            Cesar(textInput, textOutput, (int)keyInput.Value, (Mode)selectedMode.SelectedIndex);
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)
@@ -93,6 +114,19 @@ namespace InfoBez
         {
             textOutput.Text = outputText;
             progressBar.Value = 100;
+        }
+
+        private void key_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            char number = e.KeyChar;
+            if (number == '')
+                Console.WriteLine("asf");
+            if ((Char.IsDigit(number) && int.Parse(number.ToString()) == 0)  )
+            {
+                e.Handled = true;
+            }
+
         }
     }
 }
