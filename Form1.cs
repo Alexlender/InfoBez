@@ -9,6 +9,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace InfoBez
 {
     enum Mode { Encode, Decode };
@@ -23,36 +25,49 @@ namespace InfoBez
             backgroundWorker1.WorkerSupportsCancellation = true;
             backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_WorkDone;
+            lengh.Text = $"(длина входного текста: {textInput.Text.Length})";
         }
 
-        private void Permutation(TextBox input, TextBox output, List<int> key, Mode mode = Mode.Encode)
+        private void Permutation()
         {
-           backgroundWorker1.RunWorkerAsync(new List<object>{ input.Text, key, mode});
+            if (key.Text.Length == 0)
+            {
+                MessageBox.Show("Нужно хотя бы попробовать ввести ключ", "-_-", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            var nums = key.Text.Split(',').
+            Select(x => int.Parse(x)).ToList();
+            if (CheckKey(nums))
+                Permutation(textInput, nums, (Mode)selectedMode.SelectedIndex);
+        }
+        private void Permutation(TextBox input, List<int> key, Mode mode = Mode.Encode)
+        {
+           backgroundWorker1.RunWorkerAsync(new List<object>{input.Text, key, mode});
 
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
-            if(CheckKey())
-                Permutation(textInput, textOutput, null, (Mode)selectedMode.SelectedIndex);
+        {
+            Permutation();
+
         }
 
-        private bool CheckKey()
+        private bool CheckKey(List<int> nums)
         {
-            if (key.Text.GroupBy(x => x).Any(x => x.Count() > 1))
+
+            if (!nums.GroupBy(x => x).Any(x => x.Count() > 1))
             {
-                MessageBox.Show("Неверно введён ключ", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!");
-                return false;
-            }
-            foreach (char c in key.Text)
-            {
-                if (int.Parse(c.ToString()) <= 0 || int.Parse(c.ToString()) > key.Text.Length)
+                if (!nums.Any(x => x > textInput.Text.Length && x <= 0))
                 {
-                    MessageBox.Show("Неверно введён ключ", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!");
-                    return false;
+                    var h1 = nums.OrderBy(x => x).ToList();
+                    var h2 = Enumerable.Range(1, h1.Max()).ToList();
+                    if (Enumerable.SequenceEqual(h1, h2))
+                        return true;
                 }
+
             }
-            return true;
+            MessageBox.Show("Неверно введён ключ", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
         }
 
 
@@ -79,27 +94,39 @@ namespace InfoBez
         {
 
             (textInput.Text, textOutput.Text) = (textOutput.Text, textInput.Text);
+            Permutation();
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)
         {
-
+            lengh.Text = $"(длина входного текста: {textInput.Text.Length})";
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            //Cesar(textInput, textOutput, (int)keyInput.Value, (Mode)selectedMode.SelectedIndex);
             List<object> list = e.Argument as List<object>;
             string inputText = (string)list[0];
-            int key = (int)list[1];
+            List<int> key = list[1] as List<int>;
             Mode mode = (Mode)list[2];
             outputText = "";
-            for (int i = 0; i<inputText.Length;i++)
+
+            int len = inputText.Length % key.Count() == 0 ? inputText.Length : (inputText.Length / key.Count() + 1) * key.Count();            
+            inputText += new string(' ', len - inputText.Length);
+
+
+
+            for (int i = 0; i <= len-key.Count; i += key.Count)
             {
-                char c = inputText[i];
-                outputText += (char)(c + key * (mode == Mode.Encode ? 1 : -1));
-                worker.ReportProgress((int)((double)i/inputText.Length*100));
+                for(int j = 0; j < key.Count; j++)
+                {
+                    if(mode == Mode.Encode)
+                        outputText += inputText[key[j] - 1 + i];
+                    else
+                        outputText += inputText[key.IndexOf(j + 1) + i]; 
+                }
+
+                worker.ReportProgress((int)((double)i/ (len - key.Count) * 100));
 
             }
         }
@@ -120,12 +147,19 @@ namespace InfoBez
         {
 
             char number = e.KeyChar;
-            if (number == '')
-                Console.WriteLine("asf");
-            if ((Char.IsDigit(number) && int.Parse(number.ToString()) == 0)  )
+
+            
+            if (!(number == '' || (number == ',' && key.Text.Length > 0 && key.Text.LastOrDefault() != ',') || (Char.IsDigit(number))))
             {
                 e.Handled = true;
             }
+
+        }
+
+        private void key_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip t = new ToolTip();
+            t.SetToolTip(key, "Нужно указать номера через запятую");
 
         }
     }
