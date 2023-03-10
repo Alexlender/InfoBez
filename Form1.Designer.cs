@@ -108,6 +108,7 @@
             this.splitContainer2.Panel1.Controls.Add(this.selectedMode);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
             this.splitContainer2.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.splitContainer2.Panel1MinSize = 200;
             // 
             // splitContainer2.Panel2
             // 
