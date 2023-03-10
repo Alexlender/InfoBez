@@ -1,8 +1,11 @@
-﻿using System;
+﻿using InfoBez.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -25,22 +28,54 @@ namespace InfoBez
             backgroundWorker1.WorkerSupportsCancellation = true;
             backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_WorkDone;
-            lengh.Text = $"(длина входного текста: {textInput.Text.Length})";
-        }
 
-        private void Permutation()
-        {
-            if (key.Text.Length == 0)
-            {
-                MessageBox.Show("Нужно хотя бы попробовать ввести ключ", "-_-", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            var nums = key.Text.Split(',').
-            Select(x => int.Parse(x)).ToList();
-            if (CheckKey(nums))
-                Permutation(textInput, nums, (Mode)selectedMode.SelectedIndex);
         }
-        private void Permutation(TextBox input, List<int> key, Mode mode = Mode.Encode)
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            selectedMode.SelectedIndex = (int)Mode.Encode;
+
+            textInput.DoubleClick += TexBox_Click;
+            textOutput.DoubleClick += TexBox_Click;
+
+            if (!File.Exists("Polybius.key"))
+            {
+                File.WriteAllText("Polybius.key", Resources.Polybius);
+            }
+            key.Text = Path.Combine(Application.StartupPath, "Polybius.key");
+
+        }
+        private void openFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opfd = new OpenFileDialog();
+            opfd.Multiselect = false;
+            opfd.InitialDirectory = Application.StartupPath;
+            if (opfd.ShowDialog(this) == DialogResult.OK)
+            {
+                key.Text = opfd.FileName;
+            }
+        }
+        private void Polybius()
+        {
+            try
+            {
+                List<List<string>> matrix = File.ReadAllLines(key.Text).Select(x => x.Split(' ').ToList()).ToList();
+                foreach(var c in textInput.Text)
+                {
+
+                    if (matrix.Where(x => x.Contains(c.ToString().ToUpper())).Count() == 0)
+                    {
+                        MessageBox.Show("Во входной строке есть символы, которые не были определены в ключе", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                Polybius(textInput, matrix, (Mode)selectedMode.SelectedIndex);
+            }
+            catch
+            {
+                MessageBox.Show("По непонятной причине всё сломалось. Скорее всего, неправильно записан ключ", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void Polybius(TextBox input, List<List<string>> key, Mode mode = Mode.Encode)
         {
            backgroundWorker1.RunWorkerAsync(new List<object>{input.Text, key, mode});
 
@@ -48,27 +83,10 @@ namespace InfoBez
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Permutation();
+            Polybius();
 
         }
 
-        private bool CheckKey(List<int> nums)
-        {
-
-            if (!nums.GroupBy(x => x).Any(x => x.Count() > 1))
-            {
-                if (!nums.Any(x => x > textInput.Text.Length && x <= 0))
-                {
-                    var h1 = nums.OrderBy(x => x).ToList();
-                    var h2 = Enumerable.Range(1, h1.Max()).ToList();
-                    if (Enumerable.SequenceEqual(h1, h2))
-                        return true;
-                }
-
-            }
-            MessageBox.Show("Неверно введён ключ", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
-        }
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
@@ -80,24 +98,17 @@ namespace InfoBez
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            selectedMode.SelectedIndex = (int)Mode.Encode;
-
-            textInput.DoubleClick += TexBox_Click;
-            textOutput.DoubleClick += TexBox_Click;
-        }
 
         private void TexBox_Click(object sender, EventArgs e)
         {
 
             (textInput.Text, textOutput.Text) = (textOutput.Text, textInput.Text);
-            Permutation();
+            Polybius();
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)
         {
-            lengh.Text = $"(длина входного текста: {textInput.Text.Length})";
+            
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -105,28 +116,57 @@ namespace InfoBez
             BackgroundWorker worker = sender as BackgroundWorker;
             List<object> list = e.Argument as List<object>;
             string inputText = (string)list[0];
-            List<int> key = list[1] as List<int>;
+            List<List<string>> key = list[1] as List<List<string>>;
             Mode mode = (Mode)list[2];
             outputText = "";
 
-            int len = inputText.Length % key.Count() == 0 ? inputText.Length : (inputText.Length / key.Count() + 1) * key.Count();            
-            inputText += new string(' ', len - inputText.Length);
-
-
-
-            for (int i = 0; i <= len-key.Count; i += key.Count)
+            List<List<int>> cords = new List<List<int>>();
+            foreach (var c in inputText)
             {
-                for(int j = 0; j < key.Count; j++)
-                {
-                    if(mode == Mode.Encode)
-                        outputText += inputText[key[j] - 1 + i];
-                    else
-                        outputText += inputText[key.IndexOf(j + 1) + i]; 
-                }
-
-                worker.ReportProgress((int)((double)i/ (len - key.Count) * 100));
-
+                cords.Add(new List<int>() { key.IndexOf(key.Where(x => x.Contains(c.ToString().ToUpper())).First()),
+                    key.Where(x => x.Contains(c.ToString().ToUpper())).First().IndexOf(c.ToString().ToUpper())});
             }
+            List<List<int>> cords2 = new List<List<int>>();
+            if (mode == Mode.Encode)
+            {
+                int j = 0;
+                foreach (int i in new List<int>() { 0, 1 })
+                {
+                    for (; j < cords.Count - 1; j += 2)
+                    {
+                        cords2.Add(new List<int>() { cords[j][i], cords[j + 1][i] });
+                    }
+                    if (cords2.Count * 2 < cords.Count)
+                    {
+                        cords2.Add(new List<int>() { cords.Last()[0], cords.First()[1] });
+                        j = 1;
+                    }
+                    else
+                        j = 0;
+                }
+            }
+            else
+            {
+                List<int> buffer = new List<int>();
+                foreach (var j in cords)
+                {
+                    buffer.Add(j[0]);
+                    buffer.Add(j[1]);
+                }
+                for(int i = 0, j = (buffer.Count / 2); i< (buffer.Count / 2); i++, j++)
+                {
+                    cords2.Add(new List<int>() { buffer[i], buffer[j] });
+                }
+            }
+
+
+            foreach(var c in cords2)
+            {
+                outputText += key[c[0]][c[1]].ToString();
+            }
+
+            
+
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -144,21 +184,27 @@ namespace InfoBez
         private void key_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            char number = e.KeyChar;
-
-            
-            if (!(number == '' || (number == ',' && key.Text.Length > 0 && key.Text.LastOrDefault() != ',') || (Char.IsDigit(number))))
-            {
-                e.Handled = true;
-            }
-
         }
 
         private void key_MouseEnter(object sender, EventArgs e)
         {
-            ToolTip t = new ToolTip();
-            t.SetToolTip(key, "Нужно указать номера через запятую");
+            
 
+        }
+
+        private void key_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edit_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/c notepad \"{key.Text}\"",
+                WindowStyle = ProcessWindowStyle.Hidden
+            });
         }
     }
 }
