@@ -61,10 +61,22 @@ namespace InfoBez.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на А Б В Г Д Е Ё Ж
+        ///З И Й К Л М Н О
+        ///П Р С Т У Ф Х Ц
+        ///Ч Ш Щ Ы Ь Э Ю Я.
+        /// </summary>
+        internal static string Playfair {
+            get {
+                return ResourceManager.GetString("Playfair", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на А Б В Г Д
         ///Е Ж И К Л
         ///М Н О П Р
-        ///Т У Ф Ц Ч 
+        ///Т У Ф Ц Ч
         ///Ш Ы Ь Ю Я.
         /// </summary>
         internal static string Polybius {

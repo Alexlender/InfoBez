@@ -33,14 +33,16 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textOutput = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.edit = new System.Windows.Forms.Button();
+            this.openFile = new System.Windows.Forms.Button();
             this.key = new System.Windows.Forms.TextBox();
             this.button = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.selectedMode = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.openFile = new System.Windows.Forms.Button();
-            this.edit = new System.Windows.Forms.Button();
+            this.fillingСhar = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -104,6 +106,8 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.label2);
+            this.splitContainer2.Panel1.Controls.Add(this.fillingСhar);
             this.splitContainer2.Panel1.Controls.Add(this.edit);
             this.splitContainer2.Panel1.Controls.Add(this.openFile);
             this.splitContainer2.Panel1.Controls.Add(this.key);
@@ -122,6 +126,28 @@
             this.splitContainer2.Size = new System.Drawing.Size(750, 473);
             this.splitContainer2.SplitterDistance = 213;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // edit
+            // 
+            this.edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.edit.Location = new System.Drawing.Point(128, 86);
+            this.edit.Name = "edit";
+            this.edit.Size = new System.Drawing.Size(85, 30);
+            this.edit.TabIndex = 11;
+            this.edit.Text = "Править";
+            this.edit.UseVisualStyleBackColor = true;
+            this.edit.Click += new System.EventHandler(this.edit_Click);
+            // 
+            // openFile
+            // 
+            this.openFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.openFile.Location = new System.Drawing.Point(25, 86);
+            this.openFile.Name = "openFile";
+            this.openFile.Size = new System.Drawing.Size(85, 30);
+            this.openFile.TabIndex = 10;
+            this.openFile.Text = "Выбрать";
+            this.openFile.UseVisualStyleBackColor = true;
+            this.openFile.Click += new System.EventHandler(this.openFile_Click);
             // 
             // key
             // 
@@ -165,7 +191,7 @@
             this.selectedMode.Items.AddRange(new object[] {
             "Кодировать",
             "Декодировать"});
-            this.selectedMode.Location = new System.Drawing.Point(268, 95);
+            this.selectedMode.Location = new System.Drawing.Point(248, 92);
             this.selectedMode.Margin = new System.Windows.Forms.Padding(2);
             this.selectedMode.Name = "selectedMode";
             this.selectedMode.Size = new System.Drawing.Size(92, 21);
@@ -189,27 +215,27 @@
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // openFile
+            // fillingСhar
             // 
-            this.openFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.openFile.Location = new System.Drawing.Point(25, 86);
-            this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(85, 30);
-            this.openFile.TabIndex = 10;
-            this.openFile.Text = "Выбрать";
-            this.openFile.UseVisualStyleBackColor = true;
-            this.openFile.Click += new System.EventHandler(this.openFile_Click);
+            this.fillingСhar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.fillingСhar.Location = new System.Drawing.Point(248, 58);
+            this.fillingСhar.Margin = new System.Windows.Forms.Padding(2);
+            this.fillingСhar.MaxLength = 1;
+            this.fillingСhar.Name = "fillingСhar";
+            this.fillingСhar.Size = new System.Drawing.Size(144, 23);
+            this.fillingСhar.TabIndex = 12;
+            this.fillingСhar.Text = "Й";
             // 
-            // edit
+            // label2
             // 
-            this.edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.edit.Location = new System.Drawing.Point(128, 86);
-            this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(85, 30);
-            this.edit.TabIndex = 11;
-            this.edit.Text = "Править";
-            this.edit.UseVisualStyleBackColor = true;
-            this.edit.Click += new System.EventHandler(this.edit_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(245, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(147, 17);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Символ-заполнитель";
             // 
             // Form1
             // 
@@ -220,7 +246,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(454, 494);
             this.Name = "Form1";
-            this.Text = "Квадрат Полибия";
+            this.Text = "Квадрат Плейфера";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -251,6 +277,8 @@
         private System.Windows.Forms.TextBox key;
         private System.Windows.Forms.Button openFile;
         private System.Windows.Forms.Button edit;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox fillingСhar;
     }
 }
 
