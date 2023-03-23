@@ -34,14 +34,13 @@
             this.textOutput = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.edit = new System.Windows.Forms.Button();
-            this.openFile = new System.Windows.Forms.Button();
             this.key = new System.Windows.Forms.TextBox();
             this.button = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.selectedMode = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.fillingСhar = new System.Windows.Forms.TextBox();
+            this.selectedMode = new System.Windows.Forms.ComboBox();
+            this.keyInput = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -51,6 +50,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.keyInput)).BeginInit();
             this.SuspendLayout();
             // 
             // textInput
@@ -107,9 +107,8 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.label2);
-            this.splitContainer2.Panel1.Controls.Add(this.fillingСhar);
+            this.splitContainer2.Panel1.Controls.Add(this.keyInput);
             this.splitContainer2.Panel1.Controls.Add(this.edit);
-            this.splitContainer2.Panel1.Controls.Add(this.openFile);
             this.splitContainer2.Panel1.Controls.Add(this.key);
             this.splitContainer2.Panel1.Controls.Add(this.button);
             this.splitContainer2.Panel1.Controls.Add(this.progressBar);
@@ -130,24 +129,13 @@
             // edit
             // 
             this.edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.edit.Location = new System.Drawing.Point(128, 86);
+            this.edit.Location = new System.Drawing.Point(426, 58);
             this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(85, 30);
+            this.edit.Size = new System.Drawing.Size(116, 30);
             this.edit.TabIndex = 11;
-            this.edit.Text = "Править";
+            this.edit.Text = "Генерировать";
             this.edit.UseVisualStyleBackColor = true;
             this.edit.Click += new System.EventHandler(this.edit_Click);
-            // 
-            // openFile
-            // 
-            this.openFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.openFile.Location = new System.Drawing.Point(25, 86);
-            this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(85, 30);
-            this.openFile.TabIndex = 10;
-            this.openFile.Text = "Выбрать";
-            this.openFile.UseVisualStyleBackColor = true;
-            this.openFile.Click += new System.EventHandler(this.openFile_Click);
             // 
             // key
             // 
@@ -155,7 +143,7 @@
             this.key.Location = new System.Drawing.Point(25, 58);
             this.key.Margin = new System.Windows.Forms.Padding(2);
             this.key.Name = "key";
-            this.key.Size = new System.Drawing.Size(188, 23);
+            this.key.Size = new System.Drawing.Size(349, 23);
             this.key.TabIndex = 8;
             this.key.TextChanged += new System.EventHandler(this.key_TextChanged);
             this.key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.key_KeyPress);
@@ -184,19 +172,6 @@
             this.progressBar.Step = 1;
             this.progressBar.TabIndex = 7;
             // 
-            // selectedMode
-            // 
-            this.selectedMode.FormattingEnabled = true;
-            this.selectedMode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.selectedMode.Items.AddRange(new object[] {
-            "Кодировать",
-            "Декодировать"});
-            this.selectedMode.Location = new System.Drawing.Point(248, 92);
-            this.selectedMode.Margin = new System.Windows.Forms.Padding(2);
-            this.selectedMode.Name = "selectedMode";
-            this.selectedMode.Size = new System.Drawing.Size(92, 21);
-            this.selectedMode.TabIndex = 6;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -204,9 +179,9 @@
             this.label1.Location = new System.Drawing.Point(22, 39);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.Size = new System.Drawing.Size(96, 17);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Ключ";
+            this.label1.Text = "Ключ (гамма)";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // backgroundWorker1
@@ -215,27 +190,52 @@
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // fillingСhar
+            // selectedMode
             // 
-            this.fillingСhar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.fillingСhar.Location = new System.Drawing.Point(248, 58);
-            this.fillingСhar.Margin = new System.Windows.Forms.Padding(2);
-            this.fillingСhar.MaxLength = 1;
-            this.fillingСhar.Name = "fillingСhar";
-            this.fillingСhar.Size = new System.Drawing.Size(144, 23);
-            this.fillingСhar.TabIndex = 12;
-            this.fillingСhar.Text = "Й";
+            this.selectedMode.FormattingEnabled = true;
+            this.selectedMode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.selectedMode.Items.AddRange(new object[] {
+            "Кодировать",
+            "Декодировать"});
+            this.selectedMode.Location = new System.Drawing.Point(25, 96);
+            this.selectedMode.Margin = new System.Windows.Forms.Padding(2);
+            this.selectedMode.Name = "selectedMode";
+            this.selectedMode.Size = new System.Drawing.Size(92, 21);
+            this.selectedMode.TabIndex = 6;
+            // 
+            // keyInput
+            // 
+            this.keyInput.Location = new System.Drawing.Point(482, 97);
+            this.keyInput.Margin = new System.Windows.Forms.Padding(2);
+            this.keyInput.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.keyInput.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.keyInput.Name = "keyInput";
+            this.keyInput.Size = new System.Drawing.Size(55, 20);
+            this.keyInput.TabIndex = 12;
+            this.keyInput.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(245, 39);
+            this.label2.Location = new System.Drawing.Point(423, 97);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 17);
+            this.label2.Size = new System.Drawing.Size(55, 17);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Символ-заполнитель";
+            this.label2.Text = "Длина:";
             // 
             // Form1
             // 
@@ -259,6 +259,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.keyInput)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -271,14 +272,13 @@
         private System.Windows.Forms.TextBox textOutput;
         private System.Windows.Forms.Button button;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox selectedMode;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TextBox key;
-        private System.Windows.Forms.Button openFile;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox fillingСhar;
+        private System.Windows.Forms.NumericUpDown keyInput;
+        private System.Windows.Forms.ComboBox selectedMode;
     }
 }
 
