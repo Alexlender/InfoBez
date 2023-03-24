@@ -29,72 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.textInput = new System.Windows.Forms.TextBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textOutput = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.label2 = new System.Windows.Forms.Label();
             this.keyLen = new System.Windows.Forms.NumericUpDown();
             this.edit = new System.Windows.Forms.Button();
             this.key = new System.Windows.Forms.TextBox();
             this.button = new System.Windows.Forms.Button();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.keyLen)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textInput
-            // 
-            this.textInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textInput.Location = new System.Drawing.Point(0, 0);
-            this.textInput.Margin = new System.Windows.Forms.Padding(30);
-            this.textInput.Multiline = true;
-            this.textInput.Name = "textInput";
-            this.textInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textInput.Size = new System.Drawing.Size(374, 256);
-            this.textInput.TabIndex = 0;
-            this.textInput.Text = "ГАРДИНА";
-            this.textInput.TextChanged += new System.EventHandler(this.textInput_TextChanged);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.textInput);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.textOutput);
-            this.splitContainer1.Size = new System.Drawing.Size(750, 256);
-            this.splitContainer1.SplitterDistance = 374;
-            this.splitContainer1.TabIndex = 1;
-            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
-            // 
-            // textOutput
-            // 
-            this.textOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textOutput.Location = new System.Drawing.Point(0, 0);
-            this.textOutput.Multiline = true;
-            this.textOutput.Name = "textOutput";
-            this.textOutput.ReadOnly = true;
-            this.textOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textOutput.Size = new System.Drawing.Size(372, 256);
-            this.textOutput.TabIndex = 1;
             // 
             // splitContainer2
             // 
@@ -118,11 +68,11 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer1);
+            this.splitContainer2.Panel2.Controls.Add(this.textBox1);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer2.Size = new System.Drawing.Size(750, 473);
-            this.splitContainer2.SplitterDistance = 213;
+            this.splitContainer2.SplitterDistance = 308;
             this.splitContainer2.TabIndex = 2;
             // 
             // label2
@@ -176,9 +126,8 @@
             this.key.Location = new System.Drawing.Point(25, 58);
             this.key.Margin = new System.Windows.Forms.Padding(2);
             this.key.Name = "key";
-            this.key.Size = new System.Drawing.Size(349, 23);
+            this.key.Size = new System.Drawing.Size(128, 23);
             this.key.TabIndex = 8;
-            this.key.Text = "Секретный ключ";
             this.key.TextChanged += new System.EventHandler(this.key_TextChanged);
             this.key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.key_KeyPress);
             this.key.MouseEnter += new System.EventHandler(this.key_MouseEnter);
@@ -187,7 +136,7 @@
             // 
             this.button.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button.Location = new System.Drawing.Point(0, 158);
+            this.button.Location = new System.Drawing.Point(0, 251);
             this.button.Margin = new System.Windows.Forms.Padding(2);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(750, 47);
@@ -196,16 +145,6 @@
             this.button.UseVisualStyleBackColor = true;
             this.button.Click += new System.EventHandler(this.button1_Click);
             // 
-            // progressBar
-            // 
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar.Location = new System.Drawing.Point(0, 205);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(2);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(750, 8);
-            this.progressBar.Step = 1;
-            this.progressBar.TabIndex = 7;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -213,9 +152,9 @@
             this.label1.Location = new System.Drawing.Point(22, 39);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 17);
+            this.label1.Size = new System.Drawing.Size(86, 17);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Ключ (гамма)";
+            this.label1.Text = "IP адресата";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // backgroundWorker1
@@ -223,6 +162,25 @@
             this.backgroundWorker1.WorkerReportsProgress = true;
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar.Location = new System.Drawing.Point(0, 298);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(750, 10);
+            this.progressBar.Step = 1;
+            this.progressBar.TabIndex = 7;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(750, 161);
+            this.textBox1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -233,17 +191,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(454, 494);
             this.Name = "Form1";
-            this.Text = "Квадрат Плейфера";
+            this.Text = "Алгоритм Диффи-Хеллмана";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.keyLen)).EndInit();
@@ -252,19 +205,16 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textInput;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.TextBox textOutput;
         private System.Windows.Forms.Button button;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TextBox key;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown keyLen;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
