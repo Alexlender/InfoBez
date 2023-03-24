@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textOutput = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -68,7 +68,7 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer2.Panel2.Controls.Add(this.textOutput);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer2.Size = new System.Drawing.Size(750, 473);
@@ -173,14 +173,14 @@
             this.progressBar.Step = 1;
             this.progressBar.TabIndex = 7;
             // 
-            // textBox1
+            // textOutput
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(750, 161);
-            this.textBox1.TabIndex = 0;
+            this.textOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textOutput.Location = new System.Drawing.Point(0, 0);
+            this.textOutput.Multiline = true;
+            this.textOutput.Name = "textOutput";
+            this.textOutput.Size = new System.Drawing.Size(750, 161);
+            this.textOutput.TabIndex = 0;
             // 
             // Form1
             // 
@@ -214,7 +214,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown keyLen;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textOutput;
     }
 }
 
