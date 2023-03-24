@@ -33,15 +33,14 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textOutput = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
+            this.keyLen = new System.Windows.Forms.NumericUpDown();
             this.edit = new System.Windows.Forms.Button();
             this.key = new System.Windows.Forms.TextBox();
             this.button = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.selectedMode = new System.Windows.Forms.ComboBox();
-            this.keyInput = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -50,7 +49,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.keyInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.keyLen)).BeginInit();
             this.SuspendLayout();
             // 
             // textInput
@@ -107,14 +106,14 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.label2);
-            this.splitContainer2.Panel1.Controls.Add(this.keyInput);
+            this.splitContainer2.Panel1.Controls.Add(this.keyLen);
             this.splitContainer2.Panel1.Controls.Add(this.edit);
             this.splitContainer2.Panel1.Controls.Add(this.key);
             this.splitContainer2.Panel1.Controls.Add(this.button);
             this.splitContainer2.Panel1.Controls.Add(this.progressBar);
-            this.splitContainer2.Panel1.Controls.Add(this.selectedMode);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
             this.splitContainer2.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             this.splitContainer2.Panel1MinSize = 200;
             // 
             // splitContainer2.Panel2
@@ -126,10 +125,44 @@
             this.splitContainer2.SplitterDistance = 213;
             this.splitContainer2.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(22, 100);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 17);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Длина:";
+            // 
+            // keyLen
+            // 
+            this.keyLen.Location = new System.Drawing.Point(81, 100);
+            this.keyLen.Margin = new System.Windows.Forms.Padding(2);
+            this.keyLen.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.keyLen.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.keyLen.Name = "keyLen";
+            this.keyLen.Size = new System.Drawing.Size(55, 20);
+            this.keyLen.TabIndex = 12;
+            this.keyLen.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // edit
             // 
             this.edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.edit.Location = new System.Drawing.Point(426, 58);
+            this.edit.Location = new System.Drawing.Point(151, 93);
             this.edit.Name = "edit";
             this.edit.Size = new System.Drawing.Size(116, 30);
             this.edit.TabIndex = 11;
@@ -145,6 +178,7 @@
             this.key.Name = "key";
             this.key.Size = new System.Drawing.Size(349, 23);
             this.key.TabIndex = 8;
+            this.key.Text = "Секретный ключ";
             this.key.TextChanged += new System.EventHandler(this.key_TextChanged);
             this.key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.key_KeyPress);
             this.key.MouseEnter += new System.EventHandler(this.key_MouseEnter);
@@ -190,53 +224,6 @@
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // selectedMode
-            // 
-            this.selectedMode.FormattingEnabled = true;
-            this.selectedMode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.selectedMode.Items.AddRange(new object[] {
-            "Кодировать",
-            "Декодировать"});
-            this.selectedMode.Location = new System.Drawing.Point(25, 96);
-            this.selectedMode.Margin = new System.Windows.Forms.Padding(2);
-            this.selectedMode.Name = "selectedMode";
-            this.selectedMode.Size = new System.Drawing.Size(92, 21);
-            this.selectedMode.TabIndex = 6;
-            // 
-            // keyInput
-            // 
-            this.keyInput.Location = new System.Drawing.Point(482, 97);
-            this.keyInput.Margin = new System.Windows.Forms.Padding(2);
-            this.keyInput.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.keyInput.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.keyInput.Name = "keyInput";
-            this.keyInput.Size = new System.Drawing.Size(55, 20);
-            this.keyInput.TabIndex = 12;
-            this.keyInput.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(423, 97);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 17);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Длина:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,7 +246,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.keyInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.keyLen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -277,8 +264,7 @@
         private System.Windows.Forms.TextBox key;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown keyInput;
-        private System.Windows.Forms.ComboBox selectedMode;
+        private System.Windows.Forms.NumericUpDown keyLen;
     }
 }
 

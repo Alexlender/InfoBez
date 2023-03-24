@@ -32,26 +32,21 @@ namespace InfoBez
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            selectedMode.SelectedIndex = (int)Mode.Encode;
 
             textInput.DoubleClick += TexBox_Click;
             textOutput.DoubleClick += TexBox_Click;
+            keyLen.Value = key.Text.Length;
 
         }
-        private void Playfair()
+        private void XOR(TextBox input, TextBox key)
         {
-
-           
-        }
-        private void Playfair(TextBox input, List<List<string>> key, Mode mode = Mode.Encode)
-        {
-           backgroundWorker1.RunWorkerAsync(new List<object>{input.Text, key, mode});
+           backgroundWorker1.RunWorkerAsync(new List<object>{input.Text, key.Text});
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Playfair();
+            XOR(textInput, key);
 
         }
 
@@ -71,7 +66,7 @@ namespace InfoBez
         {
 
             (textInput.Text, textOutput.Text) = (textOutput.Text, textInput.Text);
-            Playfair();
+            XOR(textInput, key);
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)
@@ -84,11 +79,24 @@ namespace InfoBez
             BackgroundWorker worker = sender as BackgroundWorker;
             List<object> list = e.Argument as List<object>;
             string inputText = (string)list[0];
-            List<List<string>> key = list[1] as List<List<string>>;
-            Mode mode = (Mode)list[2];
+            string key = (string)list[1];
+
             outputText = "";
 
-            
+            int len;
+            if (inputText.Length > key.Length)
+                len = key.Length * (inputText.Length / key.Length + (inputText.Length % key.Length > 0 ? 1 : 0));
+            else
+                len = (int)key.Length;
+
+            inputText += new string(' ', len - inputText.Length);
+            key = String.Concat(Enumerable.Repeat(key, len / key.Length));
+
+            for(int i = 0; i< len; i++)
+            {
+                outputText += (char)(inputText[i] ^ key[i]);
+            }
+
 
         }
 
@@ -117,12 +125,21 @@ namespace InfoBez
 
         private void key_TextChanged(object sender, EventArgs e)
         {
-
+            keyLen.Value = key.Text.Length;
         }
 
         private void edit_Click(object sender, EventArgs e)
         {
-            
+            Random rand = new Random();
+            int len = (int)keyLen.Value;
+            key.Text = "";
+            for (int i = 0; i < len; i++)
+                key.Text += (char)rand.Next(0x0410, 0x44F);
+        }
+
+        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
