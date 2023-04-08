@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,8 +18,19 @@ using System.Windows.Forms;
 
 namespace InfoBez
 {
-    enum Mode { Encode, Decode };
-    
+
+    internal class IpPort
+    {
+        public IPAddress Ip { get; set;}
+        public int Port { get; set; }
+        public IpPort(IPAddress ip, int port)
+        {
+            Port = port;
+            Ip = ip;
+        }
+    }
+
+
     public partial class Form1 : Form
     {
         string outputText;
@@ -29,27 +42,56 @@ namespace InfoBez
             backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_WorkDone;
 
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Any, 777);
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket.Bind(ipPoint);
+
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
 
             textInput.DoubleClick += TexBox_Click;
             textOutput.DoubleClick += TexBox_Click;
-            keyLen.Value = key.Text.Length;
+            keyLen.Value = ip.Text.Length;
 
         }
         private void XOR(TextBox input, TextBox key)
         {
-           backgroundWorker1.RunWorkerAsync(new List<object>{input.Text, key.Text});
+            backgroundWorker1.RunWorkerAsync(new List<object> { input.Text, key.Text });
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            XOR(textInput, key);
+            try
+            {
+                IpPort data = CheckFields(ip.Text, port.Text);
+            }
+            catch (Exception ex)
+            {
+
+            }
 
         }
 
+        private IpPort CheckFields(string ip, string port)
+        {
+            // Create an instance of IPAddress for the specified address string (in
+            // dotted-quad, or colon-hexadecimal notation).
+            IPAddress address = IPAddress.Parse(ip);
+            int portint = int.Parse(port);
+            // Display the address in standard notation.
+            return new IpPort(address, portint);
+
+        }
+
+    
+
+        private int CustomHash(int x)
+        {
+            return 13 ^ (x ^ 7) % 99999;
+        }
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
@@ -66,7 +108,7 @@ namespace InfoBez
         {
 
             (textInput.Text, textOutput.Text) = (textOutput.Text, textInput.Text);
-            XOR(textInput, key);
+            XOR(textInput, ip);
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)
@@ -125,16 +167,16 @@ namespace InfoBez
 
         private void key_TextChanged(object sender, EventArgs e)
         {
-            keyLen.Value = key.Text.Length;
+            keyLen.Value = ip.Text.Length;
         }
 
         private void edit_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
             int len = (int)keyLen.Value;
-            key.Text = "";
+            ip.Text = "";
             for (int i = 0; i < len; i++)
-                key.Text += (char)rand.Next(0x0410, 0x44F);
+                ip.Text += (char)rand.Next(0x0410, 0x44F);
         }
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
