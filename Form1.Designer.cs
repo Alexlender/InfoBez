@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.status = new System.Windows.Forms.Label();
+            this.port = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.closeKey = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.genKey = new System.Windows.Forms.Button();
+            this.openKey = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.edit = new System.Windows.Forms.Button();
+            this.genPublic = new System.Windows.Forms.Button();
             this.ip = new System.Windows.Forms.TextBox();
             this.button = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.textOutput = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.port = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -59,18 +59,20 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.status);
             this.splitContainer2.Panel1.Controls.Add(this.port);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer2.Panel1.Controls.Add(this.closeKey);
             this.splitContainer2.Panel1.Controls.Add(this.label3);
-            this.splitContainer2.Panel1.Controls.Add(this.button1);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer2.Panel1.Controls.Add(this.genKey);
+            this.splitContainer2.Panel1.Controls.Add(this.openKey);
             this.splitContainer2.Panel1.Controls.Add(this.label2);
-            this.splitContainer2.Panel1.Controls.Add(this.edit);
+            this.splitContainer2.Panel1.Controls.Add(this.genPublic);
             this.splitContainer2.Panel1.Controls.Add(this.ip);
             this.splitContainer2.Panel1.Controls.Add(this.button);
             this.splitContainer2.Panel1.Controls.Add(this.progressBar);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
+            this.splitContainer2.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.splitContainer2.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             this.splitContainer2.Panel1MinSize = 200;
@@ -84,65 +86,98 @@
             this.splitContainer2.SplitterDistance = 308;
             this.splitContainer2.TabIndex = 2;
             // 
-            // textBox2
+            // status
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox2.Location = new System.Drawing.Point(233, 120);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(128, 23);
-            this.textBox2.TabIndex = 17;
+            this.status.AutoSize = true;
+            this.status.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.status.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.status.Location = new System.Drawing.Point(22, 115);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(159, 17);
+            this.status.TabIndex = 20;
+            this.status.Text = "Что-то пошло не так :(";
+            // 
+            // port
+            // 
+            this.port.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.port.Location = new System.Drawing.Point(171, 58);
+            this.port.Margin = new System.Windows.Forms.Padding(2);
+            this.port.Name = "port";
+            this.port.Size = new System.Drawing.Size(104, 23);
+            this.port.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label4.Location = new System.Drawing.Point(168, 39);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 17);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Порт адресата";
+            // 
+            // closeKey
+            // 
+            this.closeKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.closeKey.Location = new System.Drawing.Point(546, 58);
+            this.closeKey.Margin = new System.Windows.Forms.Padding(2);
+            this.closeKey.Name = "closeKey";
+            this.closeKey.Size = new System.Drawing.Size(116, 23);
+            this.closeKey.TabIndex = 17;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(230, 101);
+            this.label3.Location = new System.Drawing.Point(543, 39);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(172, 17);
             this.label3.TabIndex = 16;
             this.label3.Text = "Личный секретный ключ";
             // 
-            // button1
+            // genKey
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button1.Location = new System.Drawing.Point(233, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 30);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Генерировать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.genKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.genKey.Location = new System.Drawing.Point(546, 86);
+            this.genKey.Name = "genKey";
+            this.genKey.Size = new System.Drawing.Size(116, 30);
+            this.genKey.TabIndex = 15;
+            this.genKey.Text = "Генерировать";
+            this.genKey.UseVisualStyleBackColor = true;
+            this.genKey.Click += new System.EventHandler(this.genKey_Click);
             // 
-            // textBox1
+            // openKey
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox1.Location = new System.Drawing.Point(25, 120);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(128, 23);
-            this.textBox1.TabIndex = 14;
+            this.openKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.openKey.Location = new System.Drawing.Point(364, 58);
+            this.openKey.Margin = new System.Windows.Forms.Padding(2);
+            this.openKey.Name = "openKey";
+            this.openKey.Size = new System.Drawing.Size(172, 23);
+            this.openKey.TabIndex = 14;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(22, 101);
+            this.label2.Location = new System.Drawing.Point(361, 39);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 17);
             this.label2.TabIndex = 13;
             this.label2.Text = "Открытое простое число";
             // 
-            // edit
+            // genPublic
             // 
-            this.edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.edit.Location = new System.Drawing.Point(25, 148);
-            this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(116, 30);
-            this.edit.TabIndex = 11;
-            this.edit.Text = "Генерировать";
-            this.edit.UseVisualStyleBackColor = true;
+            this.genPublic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.genPublic.Location = new System.Drawing.Point(364, 86);
+            this.genPublic.Name = "genPublic";
+            this.genPublic.Size = new System.Drawing.Size(116, 30);
+            this.genPublic.TabIndex = 11;
+            this.genPublic.Text = "Генерировать";
+            this.genPublic.UseVisualStyleBackColor = true;
+            this.genPublic.Click += new System.EventHandler(this.genPublic_Click);
             // 
             // ip
             // 
@@ -152,6 +187,7 @@
             this.ip.Name = "ip";
             this.ip.Size = new System.Drawing.Size(128, 23);
             this.ip.TabIndex = 8;
+            this.ip.Text = "127.0.0.1";
             this.ip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.key_KeyPress);
             this.ip.MouseEnter += new System.EventHandler(this.key_MouseEnter);
             // 
@@ -166,7 +202,7 @@
             this.button.TabIndex = 0;
             this.button.Text = "Сделать";
             this.button.UseVisualStyleBackColor = true;
-            this.button.Click += new System.EventHandler(this.button1_Click);
+            this.button.Click += new System.EventHandler(this.button_Click);
             // 
             // progressBar
             // 
@@ -194,8 +230,11 @@
             // 
             this.textOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textOutput.Location = new System.Drawing.Point(0, 0);
+            this.textOutput.MaxLength = 1048544;
             this.textOutput.Multiline = true;
             this.textOutput.Name = "textOutput";
+            this.textOutput.ReadOnly = true;
+            this.textOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textOutput.Size = new System.Drawing.Size(750, 161);
             this.textOutput.TabIndex = 0;
             // 
@@ -205,33 +244,12 @@
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // port
-            // 
-            this.port.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.port.Location = new System.Drawing.Point(157, 58);
-            this.port.Margin = new System.Windows.Forms.Padding(2);
-            this.port.Name = "port";
-            this.port.Size = new System.Drawing.Size(104, 23);
-            this.port.TabIndex = 19;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(154, 39);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 17);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Порт адресата";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 473);
             this.Controls.Add(this.splitContainer2);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(454, 494);
             this.Name = "Form1";
             this.Text = "Алгоритм Диффи-Хеллмана";
@@ -252,16 +270,17 @@
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox ip;
-        private System.Windows.Forms.Button edit;
+        private System.Windows.Forms.Button genPublic;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TextBox textOutput;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox closeKey;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button genKey;
+        private System.Windows.Forms.TextBox openKey;
         private System.Windows.Forms.TextBox port;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label status;
     }
 }
 
