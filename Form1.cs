@@ -51,9 +51,6 @@ namespace InfoBez
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            textInput.DoubleClick += TexBox_Click;
-            textOutput.DoubleClick += TexBox_Click;
-            keyLen.Value = ip.Text.Length;
 
         }
         private void XOR(TextBox input, TextBox key)
@@ -68,9 +65,9 @@ namespace InfoBez
             {
                 IpPort data = CheckFields(ip.Text, port.Text);
             }
-            catch (Exception ex)
+            catch
             {
-
+                MessageBox.Show("Айпи или порт указаны неверно!", "ОШИБКА ВСЁ НЕПРАВИЛЬНО!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -103,13 +100,6 @@ namespace InfoBez
 
         }
 
-
-        private void TexBox_Click(object sender, EventArgs e)
-        {
-
-            (textInput.Text, textOutput.Text) = (textOutput.Text, textInput.Text);
-            XOR(textInput, ip);
-        }
 
         private void textInput_TextChanged(object sender, EventArgs e)
         {
@@ -165,19 +155,6 @@ namespace InfoBez
 
         }
 
-        private void key_TextChanged(object sender, EventArgs e)
-        {
-            keyLen.Value = ip.Text.Length;
-        }
-
-        private void edit_Click(object sender, EventArgs e)
-        {
-            Random rand = new Random();
-            int len = (int)keyLen.Value;
-            ip.Text = "";
-            for (int i = 0; i < len; i++)
-                ip.Text += (char)rand.Next(0x0410, 0x44F);
-        }
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
         {
