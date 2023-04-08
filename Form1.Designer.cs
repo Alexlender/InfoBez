@@ -143,7 +143,6 @@
             this.edit.TabIndex = 11;
             this.edit.Text = "Генерировать";
             this.edit.UseVisualStyleBackColor = true;
-            this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
             // ip
             // 
@@ -153,7 +152,6 @@
             this.ip.Name = "ip";
             this.ip.Size = new System.Drawing.Size(128, 23);
             this.ip.TabIndex = 8;
-            this.ip.TextChanged += new System.EventHandler(this.key_TextChanged);
             this.ip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.key_KeyPress);
             this.ip.MouseEnter += new System.EventHandler(this.key_MouseEnter);
             // 
@@ -233,7 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 473);
             this.Controls.Add(this.splitContainer2);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(454, 494);
             this.Name = "Form1";
             this.Text = "Алгоритм Диффи-Хеллмана";
