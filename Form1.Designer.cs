@@ -30,7 +30,6 @@
         {
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.edit = new System.Windows.Forms.Button();
-            this.openFile = new System.Windows.Forms.Button();
             this.textBoxFile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -62,7 +61,6 @@
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer2.Panel1.Controls.Add(this.edit);
-            this.splitContainer2.Panel1.Controls.Add(this.openFile);
             this.splitContainer2.Panel1.Controls.Add(this.textBoxFile);
             this.splitContainer2.Panel1.Controls.Add(this.label3);
             this.splitContainer2.Panel1.Controls.Add(this.button1);
@@ -90,22 +88,12 @@
             // edit
             // 
             this.edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.edit.Location = new System.Drawing.Point(477, 197);
+            this.edit.Location = new System.Drawing.Point(356, 197);
             this.edit.Name = "edit";
             this.edit.Size = new System.Drawing.Size(85, 30);
             this.edit.TabIndex = 27;
             this.edit.Text = "Править";
             this.edit.UseVisualStyleBackColor = true;
-            // 
-            // openFile
-            // 
-            this.openFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.openFile.Location = new System.Drawing.Point(356, 197);
-            this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(85, 30);
-            this.openFile.TabIndex = 26;
-            this.openFile.Text = "Выбрать";
-            this.openFile.UseVisualStyleBackColor = true;
             // 
             // textBoxFile
             // 
@@ -115,6 +103,7 @@
             this.textBoxFile.Name = "textBoxFile";
             this.textBoxFile.Size = new System.Drawing.Size(206, 23);
             this.textBoxFile.TabIndex = 25;
+            this.textBoxFile.Click += new System.EventHandler(this.textBox1_Click);
             // 
             // label3
             // 
@@ -279,7 +268,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxKey;
         private System.Windows.Forms.Button edit;
-        private System.Windows.Forms.Button openFile;
         private System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.Label label3;
     }

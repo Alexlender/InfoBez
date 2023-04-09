@@ -19,12 +19,13 @@ using System.Security.Cryptography;
 using System.Runtime.CompilerServices;
 using System.Reflection.Emit;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace InfoBez
 {
 
     public partial class Form1 : Form
-    { 
+    {
         private Socket s;
         public Form1()
         {
@@ -120,12 +121,23 @@ namespace InfoBez
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            KeyFileCheck();
+
+        }
+
+        private void KeyFileCheck()
+        {
             if (!File.Exists("Keys.dat"))
                 textBoxKey.Text = "Файла ещё нет :(";
             else
-                textBoxKey.Text = "Файла ещё нет :(";
+                textBoxKey.Text = Path.Combine(Application.StartupPath, "Keys.dat");
 
+            if (!File.Exists("File.dat"))
+                File.Create("File.dat");
+            else
+                textBoxFile.Text = Path.Combine(Application.StartupPath, "File.dat");
         }
+
         private void Connect(IPEndPoint iPEndPoint)
         {
             // пытаемся подключиться используя URL-адрес и порт
@@ -161,7 +173,7 @@ namespace InfoBez
                 MessageBox.Show("Не удалось подключиться :(", "Что-то пошло не так!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 AddLog("Подключение отклонено\n");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ОШИБКА ВСЁ НЕПРАВИЛЬНО!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 AddLog("Подключение отклонено\n");
@@ -178,7 +190,7 @@ namespace InfoBez
 
         }
 
-    
+
         private List<BigInteger> Read(string filename)
         {
             throw null;
@@ -221,18 +233,24 @@ namespace InfoBez
             opfd.InitialDirectory = Application.StartupPath;
             if (opfd.ShowDialog(this) == DialogResult.OK)
             {
-                ((TextBox)sender).Text = opfd.FileName;
+                ((Control)sender).Text = opfd.FileName;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Generators().Show();
+            var gen = new Generators();
+            gen.Show();
+            gen.FormClosed += (s, ec) =>
+            {
+                KeyFileCheck();
+            };
         }
 
         private void textBoxKey_TextChanged(object sender, EventArgs e)
         {
 
         }
+
     }
 }

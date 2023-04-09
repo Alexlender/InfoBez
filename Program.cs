@@ -11,7 +11,7 @@ namespace InfoBez
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
-        [MTAThread]
+        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
