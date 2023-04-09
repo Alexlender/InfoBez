@@ -32,17 +32,14 @@
             this.status = new System.Windows.Forms.Label();
             this.port = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.closeKey = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.genKey1 = new System.Windows.Forms.Button();
-            this.openKey = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.genPublic1 = new System.Windows.Forms.Button();
             this.ip = new System.Windows.Forms.TextBox();
             this.button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textOutput = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -60,15 +57,12 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer2.Panel1.Controls.Add(this.button1);
+            this.splitContainer2.Panel1.Controls.Add(this.label2);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox1);
             this.splitContainer2.Panel1.Controls.Add(this.status);
             this.splitContainer2.Panel1.Controls.Add(this.port);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
-            this.splitContainer2.Panel1.Controls.Add(this.closeKey);
-            this.splitContainer2.Panel1.Controls.Add(this.label3);
-            this.splitContainer2.Panel1.Controls.Add(this.genKey1);
-            this.splitContainer2.Panel1.Controls.Add(this.openKey);
-            this.splitContainer2.Panel1.Controls.Add(this.label2);
-            this.splitContainer2.Panel1.Controls.Add(this.genPublic1);
             this.splitContainer2.Panel1.Controls.Add(this.ip);
             this.splitContainer2.Panel1.Controls.Add(this.button);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
@@ -116,69 +110,6 @@
             this.label4.Size = new System.Drawing.Size(107, 17);
             this.label4.TabIndex = 18;
             this.label4.Text = "Порт адресата";
-            // 
-            // closeKey
-            // 
-            this.closeKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.closeKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.closeKey.Location = new System.Drawing.Point(546, 58);
-            this.closeKey.Margin = new System.Windows.Forms.Padding(2);
-            this.closeKey.Name = "closeKey";
-            this.closeKey.Size = new System.Drawing.Size(168, 23);
-            this.closeKey.TabIndex = 17;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(543, 39);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 17);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Личный секретный ключ";
-            // 
-            // genKey1
-            // 
-            this.genKey1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.genKey1.Location = new System.Drawing.Point(546, 86);
-            this.genKey1.Name = "genKey1";
-            this.genKey1.Size = new System.Drawing.Size(116, 30);
-            this.genKey1.TabIndex = 15;
-            this.genKey1.Text = "Генерировать";
-            this.genKey1.UseVisualStyleBackColor = true;
-            // 
-            // openKey
-            // 
-            this.openKey.BackColor = System.Drawing.SystemColors.Window;
-            this.openKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.openKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.openKey.Location = new System.Drawing.Point(338, 58);
-            this.openKey.Margin = new System.Windows.Forms.Padding(2);
-            this.openKey.Name = "openKey";
-            this.openKey.Size = new System.Drawing.Size(172, 23);
-            this.openKey.TabIndex = 14;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(335, 39);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 17);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Открытое простое число";
-            // 
-            // genPublic1
-            // 
-            this.genPublic1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.genPublic1.Location = new System.Drawing.Point(338, 86);
-            this.genPublic1.Name = "genPublic1";
-            this.genPublic1.Size = new System.Drawing.Size(116, 30);
-            this.genPublic1.TabIndex = 11;
-            this.genPublic1.Text = "Генерировать";
-            this.genPublic1.UseVisualStyleBackColor = true;
             // 
             // ip
             // 
@@ -231,6 +162,36 @@
             this.textOutput.TabIndex = 0;
             this.textOutput.DoubleClick += new System.EventHandler(this.textOutput_Clear);
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBox1.Location = new System.Drawing.Point(356, 58);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(185, 23);
+            this.textBox1.TabIndex = 21;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(353, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 17);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Файл с числами";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(356, 87);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 45);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Генератор";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,16 +220,13 @@
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox ip;
-        private System.Windows.Forms.Button genPublic1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textOutput;
-        private System.Windows.Forms.TextBox closeKey;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button genKey1;
-        private System.Windows.Forms.TextBox openKey;
         private System.Windows.Forms.TextBox port;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label status;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
