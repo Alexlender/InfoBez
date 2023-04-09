@@ -94,6 +94,7 @@
             this.edit.TabIndex = 27;
             this.edit.Text = "Править";
             this.edit.UseVisualStyleBackColor = true;
+            this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
             // textBoxFile
             // 
@@ -103,7 +104,7 @@
             this.textBoxFile.Name = "textBoxFile";
             this.textBoxFile.Size = new System.Drawing.Size(206, 23);
             this.textBoxFile.TabIndex = 25;
-            this.textBoxFile.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBoxFile.DoubleClick += new System.EventHandler(this.textBox1_Click);
             // 
             // label3
             // 
@@ -146,8 +147,8 @@
             this.textBoxKey.Name = "textBoxKey";
             this.textBoxKey.Size = new System.Drawing.Size(206, 23);
             this.textBoxKey.TabIndex = 21;
-            this.textBoxKey.Click += new System.EventHandler(this.textBox1_Click);
             this.textBoxKey.TextChanged += new System.EventHandler(this.textBoxKey_TextChanged);
+            this.textBoxKey.DoubleClick += new System.EventHandler(this.textBox1_Click);
             // 
             // status
             // 

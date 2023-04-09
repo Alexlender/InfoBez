@@ -252,5 +252,9 @@ namespace InfoBez
 
         }
 
+        private void edit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
