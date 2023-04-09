@@ -62,9 +62,7 @@ namespace InfoBez
         {
             try
             {
-                BigInteger key1 = BigInteger.Parse(openKey.Text);
-                BigInteger key2 = BigInteger.Parse(closeKey.Text);
-                await LogicAsync(socket, key1, key2);
+                await LogicAsync(socket, );
             }
             catch (FormatException)
             {
@@ -76,7 +74,7 @@ namespace InfoBez
             }
         }
 
-        private async Task LogicAsync(Socket socket, BigInteger openKey, BigInteger closeKey)
+        private async Task LogicAsync(Socket socket, BigInteger q, BigInteger p, BigInteger d, BigInteger e)
         {
             await Task.Run(() =>
             {
