@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,9 +19,32 @@ namespace InfoBez
             InitializeComponent();
         }
 
-        private void gen_Click(object sender, EventArgs e)
+        private async void gen_Click(object sender, EventArgs e)
         {
-            ((Button)sender).Parent. = "Лох";
+            uint num = (uint)((Button)sender).Parent.Controls.OfType<NumericUpDown>().First().Value;
+            var texBox = ((Button)sender).Parent.Controls.OfType<TextBox>().First();
+
+            await Task.Run(() => {
+                texBox.Text = KeyGen(Rand(num)).ToString();
+            });
+        }
+
+
+        private BigInteger Rand(uint len)
+        {
+            var rng = new RNGCryptoServiceProvider();
+            byte[] bytes = new byte[len];
+            rng.GetBytes(bytes);
+
+            return BigInteger.Abs(new BigInteger(bytes));
+        }
+        private BigInteger KeyGen(BigInteger row)
+        {
+            if (row.IsEven)
+                row += 1;
+            for (int i = 0; !Miller.isPrime(row); i += 2)
+                row += i;
+            return row;
         }
 
         private void button7_Click(object sender, EventArgs e)

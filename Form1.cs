@@ -80,7 +80,7 @@ namespace InfoBez
         {
             await Task.Run(() =>
             {
-                socket.SendAsync(new ArraySegment<byte>(openKey.ToByteArray()), SocketFlags.None);
+                /*socket.SendAsync(new ArraySegment<byte>(openKey.ToByteArray()), SocketFlags.None);
 
                 var response = new byte[512];
                 socket.Receive(response);
@@ -108,7 +108,7 @@ namespace InfoBez
                 var key = new BigInteger(CustomHash(a, b));
                 AddLog($"Получился ключ: {key}\n");
                 socket.Disconnect(true);
-                AddLog($"Подключение закрыто\n\n");
+                AddLog($"Подключение закрыто\n\n");*/
 
             });
 
@@ -142,14 +142,7 @@ namespace InfoBez
             return (n >= lowerBound && n < upperBound);
         }
 
-        private BigInteger KeyGen(BigInteger row)
-        {
-            if (row.IsEven)
-                row += 1;
-            for (int i = 0; !Miller.isPrime(row); i+=2)
-                row += i;
-            return row;
-        }
+        
 
         private void AddLog(string text)
         {
@@ -220,68 +213,7 @@ namespace InfoBez
             return (int)((p ^ x) % 2147483647);
         }
 
-
-
-        private void genPublic_Click(object sender, EventArgs e)
-        {
-            genP();
-        }
-
-        private BigInteger Rand(uint len)
-        {
-            var rng = new RNGCryptoServiceProvider();
-            byte[] bytes = new byte[len];
-            rng.GetBytes(bytes);
-
-            return BigInteger.Abs(new BigInteger(bytes));
-        }
-
-        private void genP()
-        {
-            var rand = new Random();
-            openKey.Text = (KeyGen(rand.Next(10000,int.MaxValue))).ToString();
-        }
-
-        private void genKey_Click(object sender, EventArgs e)
-        {
-            genK();
-        }
-
-        private void genK()
-        {
-            var rand = new Random();
-            closeKey.Text = rand.Next(0,10000).ToString();
-        }
-
-
-        private void genPublic2_Click(object sender, EventArgs e)
-        {
-            genP2();
-            
-        }
-
-        private void genKey2_Click(object sender, EventArgs e)
-        {
-            genK2();
-        }
-
-        private async void genP2()
-        {
-            var rand = new Random();
-            await Task.Run(() => {
-                openKey.Text = KeyGen(Rand(64)).ToString();
-                StopWork();
-            });
-            
-        }
-
-        bool isWorking = false;
-
-        private void StopWork()
-        {
-            isWorking = false;
-        }
-        private async void Work(Button button)
+        /*private async void Work(Button button)
         {
             isWorking = true;
             await Task.Run(async () =>
@@ -297,13 +229,7 @@ namespace InfoBez
 
 
             });
-        }
-
-        private void genK2()
-        {
-            var rand = new Random();
-            closeKey.Text = Rand(64).ToString();
-        }
+        }*/
 
         private void textOutput_Clear(object sender, EventArgs e)
         {

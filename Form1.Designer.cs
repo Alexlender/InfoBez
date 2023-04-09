@@ -147,7 +147,6 @@
             this.genKey1.TabIndex = 15;
             this.genKey1.Text = "Генерировать";
             this.genKey1.UseVisualStyleBackColor = true;
-            this.genKey1.Click += new System.EventHandler(this.genKey_Click);
             // 
             // openKey
             // 
@@ -180,7 +179,6 @@
             this.genPublic1.TabIndex = 11;
             this.genPublic1.Text = "Генерировать";
             this.genPublic1.UseVisualStyleBackColor = true;
-            this.genPublic1.Click += new System.EventHandler(this.genPublic_Click);
             // 
             // ip
             // 
