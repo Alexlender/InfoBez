@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,6 +58,12 @@ namespace InfoBez
             {
                 MessageBox.Show("Котика не будет(", "Эээх", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            foreach (var b in new List<Button>() { genP, genQ, genD, genE })
+                b.PerformClick();
         }
     }
 }
