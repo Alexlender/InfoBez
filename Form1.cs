@@ -157,12 +157,7 @@ namespace InfoBez
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-            genP();
-            genK();
-            genKey2.Visible = isMagic;
-            genPublic2.Visible = isMagic;
+        { 
 
 
         }
@@ -259,58 +254,8 @@ namespace InfoBez
         }
 
 
-        private static bool isMagic = false;
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control)
-            {
-                isMagic = !isMagic;
-                DoMagic(isMagic);
-            }
-        }
-
-        private async void DoMagic(bool isMagic)
-        {
-            foreach (var label in splitContainer2.Panel1.Controls.OfType<System.Windows.Forms.Label>().ToList())
-            {
-                label.ForeColor = isMagic ? Color.Green : Color.Black;
-            }
-
-
-            foreach (var textable in splitContainer2.Panel1.Controls.OfType<System.Windows.Forms.Label>().Cast<Control>().ToList().Union(
-                splitContainer2.Panel1.Controls.OfType<TextBox>().Cast<Control>().ToList().Append(textOutput).Append(button)))
-            {
-
-                textable.ForeColor = isMagic ? Color.Green : Color.Black;
-                textable.Font = isMagic ? new Font("Lucida Console", textable.Font.Size) : new Font("Microsoft Sans Serif", textable.Font.Size);
-
-                if(textable is TextBox)
-                    textable.BackColor = isMagic ? Color.FromName("ControlDark") : Color.FromName("Control");
-            }
-
-            splitContainer2.Panel1.BackColor = !isMagic ? Color.FromName("Control") : Color.Black;
-
-            textOutput.BackColor = splitContainer2.Panel1.BackColor = !isMagic ? Color.FromName("Control") : Color.Black;
-            textOutput.ForeColor = isMagic ? Color.White : Color.Black;
-
-            BackColor = !isMagic ? Color.FromName("Control") : Color.Black;
-
-            genKey1.Visible = !isMagic;
-            genPublic1.Visible = !isMagic;
-            genKey2.Visible = isMagic;
-            genPublic2.Visible = isMagic;
-
-            foreach (var field in new List<TextBox>{ openKey, closeKey })
-            {
-                field.Multiline = isMagic;
-                field.Size = new Size(field.Size.Width, isMagic ? 148 : 23);
-            }
-
-        }
-
         private void genPublic2_Click(object sender, EventArgs e)
         {
-            Work(genPublic2);
             genP2();
             
         }

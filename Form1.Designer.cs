@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.genKey2 = new System.Windows.Forms.Button();
-            this.genPublic2 = new System.Windows.Forms.Button();
             this.status = new System.Windows.Forms.Label();
             this.port = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -62,8 +60,6 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer2.Panel1.Controls.Add(this.genKey2);
-            this.splitContainer2.Panel1.Controls.Add(this.genPublic2);
             this.splitContainer2.Panel1.Controls.Add(this.status);
             this.splitContainer2.Panel1.Controls.Add(this.port);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
@@ -88,31 +84,6 @@
             this.splitContainer2.Size = new System.Drawing.Size(725, 459);
             this.splitContainer2.SplitterDistance = 298;
             this.splitContainer2.TabIndex = 2;
-            // 
-            // genKey2
-            // 
-            this.genKey2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.genKey2.ForeColor = System.Drawing.Color.Green;
-            this.genKey2.Location = new System.Drawing.Point(546, 211);
-            this.genKey2.Name = "genKey2";
-            this.genKey2.Size = new System.Drawing.Size(116, 30);
-            this.genKey2.TabIndex = 22;
-            this.genKey2.Text = "Генерировать";
-            this.genKey2.UseVisualStyleBackColor = true;
-            this.genKey2.Click += new System.EventHandler(this.genKey2_Click);
-            // 
-            // genPublic2
-            // 
-            this.genPublic2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.genPublic2.ForeColor = System.Drawing.Color.Green;
-            this.genPublic2.Location = new System.Drawing.Point(338, 211);
-            this.genPublic2.Name = "genPublic2";
-            this.genPublic2.Size = new System.Drawing.Size(116, 30);
-            this.genPublic2.TabIndex = 21;
-            this.genPublic2.Text = "Генерировать";
-            this.genPublic2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.genPublic2.UseVisualStyleBackColor = true;
-            this.genPublic2.Click += new System.EventHandler(this.genPublic2_Click);
             // 
             // status
             // 
@@ -261,7 +232,6 @@
             this.textOutput.Size = new System.Drawing.Size(725, 157);
             this.textOutput.TabIndex = 0;
             this.textOutput.DoubleClick += new System.EventHandler(this.textOutput_Clear);
-            //
             // 
             // Form1
             // 
@@ -275,7 +245,6 @@
             this.Name = "Form1";
             this.Text = "Алгоритм Диффи-Хеллмана";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -302,8 +271,6 @@
         private System.Windows.Forms.TextBox port;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label status;
-        private System.Windows.Forms.Button genKey2;
-        private System.Windows.Forms.Button genPublic2;
     }
 }
 
