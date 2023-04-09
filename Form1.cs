@@ -52,17 +52,17 @@ namespace InfoBez
                 else
                 {
                     AddLog($"Выполнено подключение к {((IPEndPoint)client.RemoteEndPoint).Address}");
-                    Logic(client);
+                    Logic(client, new List<BigInteger>());
                 }
             }
 
         }
 
-        private async Task Logic(Socket socket)
+        private async Task Logic(Socket socket, List<BigInteger> list)
         {
             try
             {
-                await LogicAsync(socket, );
+                await LogicAsync(socket, list[0], list[1], list[2], list[3]);
             }
             catch (FormatException)
             {
@@ -112,35 +112,6 @@ namespace InfoBez
 
         }
 
-        public static BigInteger Sqrt(BigInteger n)
-        {
-            if (n == 0) return 0;
-            if (n > 0)
-            {
-                int bitLength = Convert.ToInt32(Math.Ceiling(BigInteger.Log(n, 2)));
-                BigInteger root = BigInteger.One << (bitLength / 2);
-
-                while (!isSqrt(n, root))
-                {
-                    root += n / root;
-                    root /= 2;
-                }
-
-                return root;
-            }
-
-            throw new ArithmeticException("NaN");
-        }
-
-        private static bool isSqrt(BigInteger n, BigInteger root)
-        {
-            BigInteger lowerBound = root * root;
-            BigInteger upperBound = (root + 1) * (root + 1);
-
-            return (n >= lowerBound && n < upperBound);
-        }
-
-        
 
         private void AddLog(string text)
         {
@@ -148,8 +119,11 @@ namespace InfoBez
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        { 
-
+        {
+            if (!File.Exists("Keys.dat"))
+                textBoxKey.Text = "Файла ещё нет :(";
+            else
+                textBoxKey.Text = "Файла ещё нет :(";
 
         }
         private void Connect(IPEndPoint iPEndPoint)
@@ -180,7 +154,7 @@ namespace InfoBez
                 AddLog($"Подключение к {data.Address}:{data.Port}...\n");
                 Connect(data);
                 AddLog("Подключение выполнено\n");
-                Logic(s);
+                Logic(s, new List<BigInteger>());
             }
             catch (SocketException)
             {
@@ -205,7 +179,10 @@ namespace InfoBez
         }
 
     
-
+        private List<BigInteger> Read(string filename)
+        {
+            throw null;
+        }
         private long CustomHash(BigInteger x, BigInteger p)
         {
             return (int)((p ^ x) % 2147483647);
@@ -246,6 +223,16 @@ namespace InfoBez
             {
                 ((TextBox)sender).Text = opfd.FileName;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Generators().Show();
+        }
+
+        private void textBoxKey_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

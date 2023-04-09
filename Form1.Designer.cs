@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.edit = new System.Windows.Forms.Button();
+            this.openFile = new System.Windows.Forms.Button();
+            this.textBoxFile = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxKey = new System.Windows.Forms.TextBox();
             this.status = new System.Windows.Forms.Label();
             this.port = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,9 +61,13 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer2.Panel1.Controls.Add(this.edit);
+            this.splitContainer2.Panel1.Controls.Add(this.openFile);
+            this.splitContainer2.Panel1.Controls.Add(this.textBoxFile);
+            this.splitContainer2.Panel1.Controls.Add(this.label3);
             this.splitContainer2.Panel1.Controls.Add(this.button1);
             this.splitContainer2.Panel1.Controls.Add(this.label2);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer2.Panel1.Controls.Add(this.textBoxKey);
             this.splitContainer2.Panel1.Controls.Add(this.status);
             this.splitContainer2.Panel1.Controls.Add(this.port);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
@@ -79,14 +87,55 @@
             this.splitContainer2.SplitterDistance = 298;
             this.splitContainer2.TabIndex = 2;
             // 
+            // edit
+            // 
+            this.edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.edit.Location = new System.Drawing.Point(477, 197);
+            this.edit.Name = "edit";
+            this.edit.Size = new System.Drawing.Size(85, 30);
+            this.edit.TabIndex = 27;
+            this.edit.Text = "Править";
+            this.edit.UseVisualStyleBackColor = true;
+            // 
+            // openFile
+            // 
+            this.openFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.openFile.Location = new System.Drawing.Point(356, 197);
+            this.openFile.Name = "openFile";
+            this.openFile.Size = new System.Drawing.Size(85, 30);
+            this.openFile.TabIndex = 26;
+            this.openFile.Text = "Выбрать";
+            this.openFile.UseVisualStyleBackColor = true;
+            // 
+            // textBoxFile
+            // 
+            this.textBoxFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxFile.Location = new System.Drawing.Point(356, 169);
+            this.textBoxFile.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxFile.Name = "textBoxFile";
+            this.textBoxFile.Size = new System.Drawing.Size(206, 23);
+            this.textBoxFile.TabIndex = 25;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label3.Location = new System.Drawing.Point(353, 150);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(152, 17);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Файл с информацией";
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(356, 87);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 45);
+            this.button1.Size = new System.Drawing.Size(104, 30);
             this.button1.TabIndex = 23;
             this.button1.Text = "Генератор";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -99,16 +148,17 @@
             this.label2.TabIndex = 22;
             this.label2.Text = "Файл с ключами";
             // 
-            // textBox1
+            // textBoxKey
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox1.Location = new System.Drawing.Point(356, 58);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 23);
-            this.textBox1.TabIndex = 21;
-            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBoxKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxKey.Location = new System.Drawing.Point(356, 58);
+            this.textBoxKey.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxKey.Name = "textBoxKey";
+            this.textBoxKey.Size = new System.Drawing.Size(206, 23);
+            this.textBoxKey.TabIndex = 21;
+            this.textBoxKey.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBoxKey.TextChanged += new System.EventHandler(this.textBoxKey_TextChanged);
             // 
             // status
             // 
@@ -227,7 +277,11 @@
         private System.Windows.Forms.Label status;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxKey;
+        private System.Windows.Forms.Button edit;
+        private System.Windows.Forms.Button openFile;
+        private System.Windows.Forms.TextBox textBoxFile;
+        private System.Windows.Forms.Label label3;
     }
 }
 
