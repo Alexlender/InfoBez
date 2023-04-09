@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.status = new System.Windows.Forms.Label();
             this.port = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,9 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textOutput = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -78,6 +78,37 @@
             this.splitContainer2.Size = new System.Drawing.Size(725, 459);
             this.splitContainer2.SplitterDistance = 298;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(356, 87);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 45);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Генератор";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(353, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 17);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Файл с числами";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBox1.Location = new System.Drawing.Point(356, 58);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(185, 23);
+            this.textBox1.TabIndex = 21;
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             // 
             // status
             // 
@@ -161,36 +192,6 @@
             this.textOutput.Size = new System.Drawing.Size(725, 157);
             this.textOutput.TabIndex = 0;
             this.textOutput.DoubleClick += new System.EventHandler(this.textOutput_Clear);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox1.Location = new System.Drawing.Point(356, 58);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 23);
-            this.textBox1.TabIndex = 21;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(353, 39);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 17);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Файл с числами";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(356, 87);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 45);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Генератор";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

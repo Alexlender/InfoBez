@@ -238,5 +238,16 @@ namespace InfoBez
             if (result == DialogResult.OK)
                 textOutput.Text = "";
         }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opfd = new OpenFileDialog();
+            opfd.Multiselect = false;
+            opfd.InitialDirectory = Application.StartupPath;
+            if (opfd.ShowDialog(this) == DialogResult.OK)
+            {
+                ((TextBox)sender).Text = opfd.FileName;
+            }
+        }
     }
 }
