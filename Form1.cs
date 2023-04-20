@@ -109,7 +109,7 @@ namespace InfoBez
         {
             try
             {
-                List<BigInteger> list = Read(textBoxOpenKey.Text);
+                List<BigInteger> list = Read(textBoxKey.Text);
                 BigInteger d = list[0];
                 BigInteger n = list[1];
 
@@ -141,6 +141,7 @@ namespace InfoBez
 
 
                 BigInteger data = new BigInteger(12345);
+                AddLog($"d = {d}\n");
 
                 AddLog($"{BigInteger.ModPow(data,e,n)}\n");
 
