@@ -28,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.texBoxP = new System.Windows.Forms.TextBox();
+            this.textBoxP = new System.Windows.Forms.TextBox();
             this.genP = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.textBoxE = new System.Windows.Forms.TextBox();
-            this.genE = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lenD = new System.Windows.Forms.NumericUpDown();
             this.textBoxD = new System.Windows.Forms.TextBox();
             this.genD = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxE = new System.Windows.Forms.TextBox();
+            this.genE = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxN = new System.Windows.Forms.TextBox();
+            this.genN = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBoxNN = new System.Windows.Forms.TextBox();
+            this.genNN = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.textBoxQ = new System.Windows.Forms.TextBox();
@@ -53,28 +58,29 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lenD)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBoxP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericP)).BeginInit();
             this.SuspendLayout();
             // 
-            // texBoxP
+            // textBoxP
             // 
-            this.texBoxP.BackColor = System.Drawing.SystemColors.Window;
-            this.texBoxP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.texBoxP.Dock = System.Windows.Forms.DockStyle.Top;
-            this.texBoxP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.texBoxP.Location = new System.Drawing.Point(3, 19);
-            this.texBoxP.Margin = new System.Windows.Forms.Padding(2);
-            this.texBoxP.Multiline = true;
-            this.texBoxP.Name = "texBoxP";
-            this.texBoxP.Size = new System.Drawing.Size(190, 240);
-            this.texBoxP.TabIndex = 17;
+            this.textBoxP.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxP.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxP.Location = new System.Drawing.Point(3, 19);
+            this.textBoxP.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxP.Multiline = true;
+            this.textBoxP.Name = "textBoxP";
+            this.textBoxP.Size = new System.Drawing.Size(190, 240);
+            this.textBoxP.TabIndex = 17;
             // 
             // genP
             // 
@@ -97,8 +103,10 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxP);
             this.splitContainer1.Panel1MinSize = 300;
@@ -109,106 +117,45 @@
             this.splitContainer1.Panel2.Controls.Add(this.button6);
             this.splitContainer1.Panel2.Controls.Add(this.button5);
             this.splitContainer1.Panel2.Controls.Add(this.button4);
-            this.splitContainer1.Size = new System.Drawing.Size(784, 513);
+            this.splitContainer1.Panel2MinSize = 200;
+            this.splitContainer1.Size = new System.Drawing.Size(1184, 513);
             this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 21;
             // 
-            // groupBox3
+            // groupBox4
             // 
-            this.groupBox3.Controls.Add(this.numericUpDown3);
-            this.groupBox3.Controls.Add(this.textBoxE);
-            this.groupBox3.Controls.Add(this.genE);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBox3.Location = new System.Drawing.Point(588, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(196, 300);
-            this.groupBox3.TabIndex = 30;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ну и e";
+            this.groupBox4.Controls.Add(this.lenD);
+            this.groupBox4.Controls.Add(this.textBoxD);
+            this.groupBox4.Controls.Add(this.genD);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.groupBox4.Location = new System.Drawing.Point(980, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(196, 300);
+            this.groupBox4.TabIndex = 38;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Закрытая (чем?) d";
+            this.groupBox4.SizeChanged += new System.EventHandler(this.groupBox_SizeChanged);
             // 
-            // numericUpDown3
+            // lenD
             // 
-            this.numericUpDown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numericUpDown3.Location = new System.Drawing.Point(146, 271);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            256,
+            this.lenD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lenD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lenD.Location = new System.Drawing.Point(141, 271);
+            this.lenD.Maximum = new decimal(new int[] {
+            2048,
             0,
             0,
             0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
+            this.lenD.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(47, 23);
-            this.numericUpDown3.TabIndex = 30;
-            this.numericUpDown3.Value = new decimal(new int[] {
-            32,
-            0,
-            0,
-            0});
-            // 
-            // textBoxE
-            // 
-            this.textBoxE.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxE.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBoxE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxE.Location = new System.Drawing.Point(3, 19);
-            this.textBoxE.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxE.Multiline = true;
-            this.textBoxE.Name = "textBoxE";
-            this.textBoxE.Size = new System.Drawing.Size(190, 240);
-            this.textBoxE.TabIndex = 17;
-            // 
-            // genE
-            // 
-            this.genE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.genE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.genE.Location = new System.Drawing.Point(5, 264);
-            this.genE.Name = "genE";
-            this.genE.Size = new System.Drawing.Size(116, 30);
-            this.genE.TabIndex = 15;
-            this.genE.Text = "Генерировать";
-            this.genE.UseVisualStyleBackColor = true;
-            this.genE.Click += new System.EventHandler(this.gen_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.numericUpDown2);
-            this.groupBox2.Controls.Add(this.textBoxD);
-            this.groupBox2.Controls.Add(this.genD);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBox2.Location = new System.Drawing.Point(392, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(196, 300);
-            this.groupBox2.TabIndex = 31;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Некий d";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numericUpDown2.Location = new System.Drawing.Point(146, 271);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            256,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(47, 23);
-            this.numericUpDown2.TabIndex = 29;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.lenD.Name = "lenD";
+            this.lenD.Size = new System.Drawing.Size(47, 23);
+            this.lenD.TabIndex = 29;
+            this.lenD.Value = new decimal(new int[] {
             32,
             0,
             0,
@@ -237,7 +184,124 @@
             this.genD.TabIndex = 15;
             this.genD.Text = "Генерировать";
             this.genD.UseVisualStyleBackColor = true;
-            this.genD.Click += new System.EventHandler(this.gen_Click);
+            this.genD.Click += new System.EventHandler(this.genD_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBoxE);
+            this.groupBox2.Controls.Add(this.genE);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.groupBox2.Location = new System.Drawing.Point(784, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(196, 300);
+            this.groupBox2.TabIndex = 37;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "ОтКрЫтАя экспонента e";
+            this.groupBox2.SizeChanged += new System.EventHandler(this.groupBox_SizeChanged);
+            // 
+            // textBoxE
+            // 
+            this.textBoxE.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxE.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxE.Location = new System.Drawing.Point(3, 19);
+            this.textBoxE.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxE.Multiline = true;
+            this.textBoxE.Name = "textBoxE";
+            this.textBoxE.Size = new System.Drawing.Size(190, 240);
+            this.textBoxE.TabIndex = 17;
+            // 
+            // genE
+            // 
+            this.genE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.genE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.genE.Location = new System.Drawing.Point(5, 264);
+            this.genE.Name = "genE";
+            this.genE.Size = new System.Drawing.Size(116, 30);
+            this.genE.TabIndex = 15;
+            this.genE.Text = "Генерировать";
+            this.genE.UseVisualStyleBackColor = true;
+            this.genE.Click += new System.EventHandler(this.genE_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBoxN);
+            this.groupBox3.Controls.Add(this.genN);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.groupBox3.Location = new System.Drawing.Point(588, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(196, 300);
+            this.groupBox3.TabIndex = 35;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Функция Эйлера";
+            this.groupBox3.SizeChanged += new System.EventHandler(this.groupBox_SizeChanged);
+            // 
+            // textBoxN
+            // 
+            this.textBoxN.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxN.Location = new System.Drawing.Point(3, 19);
+            this.textBoxN.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxN.Multiline = true;
+            this.textBoxN.Name = "textBoxN";
+            this.textBoxN.Size = new System.Drawing.Size(190, 240);
+            this.textBoxN.TabIndex = 17;
+            // 
+            // genN
+            // 
+            this.genN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.genN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.genN.Location = new System.Drawing.Point(5, 264);
+            this.genN.Name = "genN";
+            this.genN.Size = new System.Drawing.Size(116, 30);
+            this.genN.TabIndex = 15;
+            this.genN.Text = "Генерировать";
+            this.genN.UseVisualStyleBackColor = true;
+            this.genN.Click += new System.EventHandler(this.genN_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBoxNN);
+            this.groupBox5.Controls.Add(this.genNN);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.groupBox5.Location = new System.Drawing.Point(392, 0);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(196, 300);
+            this.groupBox5.TabIndex = 30;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Соответствующее n";
+            this.groupBox5.SizeChanged += new System.EventHandler(this.groupBox_SizeChanged);
+            // 
+            // textBoxNN
+            // 
+            this.textBoxNN.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxNN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxNN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxNN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxNN.Location = new System.Drawing.Point(3, 19);
+            this.textBoxNN.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxNN.Multiline = true;
+            this.textBoxNN.Name = "textBoxNN";
+            this.textBoxNN.Size = new System.Drawing.Size(190, 240);
+            this.textBoxNN.TabIndex = 17;
+            // 
+            // genNN
+            // 
+            this.genNN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.genNN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.genNN.Location = new System.Drawing.Point(5, 264);
+            this.genNN.Name = "genNN";
+            this.genNN.Size = new System.Drawing.Size(116, 30);
+            this.genNN.TabIndex = 15;
+            this.genNN.Text = "Генерировать";
+            this.genNN.UseVisualStyleBackColor = true;
+            this.genNN.Click += new System.EventHandler(this.genNN_Click);
             // 
             // groupBox1
             // 
@@ -252,6 +316,8 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Какое-то q";
+            this.groupBox1.SizeChanged += new System.EventHandler(this.groupBox_SizeChanged);
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // numericUpDown1
             // 
@@ -259,7 +325,7 @@
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.numericUpDown1.Location = new System.Drawing.Point(143, 271);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            256,
+            2048,
             0,
             0,
             0});
@@ -304,7 +370,7 @@
             // 
             // groupBoxP
             // 
-            this.groupBoxP.Controls.Add(this.texBoxP);
+            this.groupBoxP.Controls.Add(this.textBoxP);
             this.groupBoxP.Controls.Add(this.numericP);
             this.groupBoxP.Controls.Add(this.genP);
             this.groupBoxP.Dock = System.Windows.Forms.DockStyle.Left;
@@ -315,6 +381,7 @@
             this.groupBoxP.TabIndex = 29;
             this.groupBoxP.TabStop = false;
             this.groupBoxP.Text = "Какое-то p";
+            this.groupBoxP.SizeChanged += new System.EventHandler(this.groupBox_SizeChanged);
             // 
             // numericP
             // 
@@ -322,7 +389,7 @@
             this.numericP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.numericP.Location = new System.Drawing.Point(143, 269);
             this.numericP.Maximum = new decimal(new int[] {
-            256,
+            2048,
             0,
             0,
             0});
@@ -346,7 +413,7 @@
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button7.Location = new System.Drawing.Point(265, 85);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(254, 124);
+            this.button7.Size = new System.Drawing.Size(654, 124);
             this.button7.TabIndex = 3;
             this.button7.Text = "Показать котика";
             this.button7.UseVisualStyleBackColor = true;
@@ -356,7 +423,7 @@
             // 
             this.button6.Dock = System.Windows.Forms.DockStyle.Right;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button6.Location = new System.Drawing.Point(519, 85);
+            this.button6.Location = new System.Drawing.Point(919, 85);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(265, 124);
             this.button6.TabIndex = 2;
@@ -382,7 +449,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.button4.Location = new System.Drawing.Point(0, 0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(784, 85);
+            this.button4.Size = new System.Drawing.Size(1184, 85);
             this.button4.TabIndex = 0;
             this.button4.Text = "Генерировать всё";
             this.button4.UseVisualStyleBackColor = true;
@@ -392,22 +459,25 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 513);
+            this.ClientSize = new System.Drawing.Size(1184, 513);
             this.Controls.Add(this.splitContainer1);
-            this.MaximumSize = new System.Drawing.Size(800, 1000);
-            this.MinimumSize = new System.Drawing.Size(800, 548);
+            this.MaximumSize = new System.Drawing.Size(1200, 1000);
+            this.MinimumSize = new System.Drawing.Size(1200, 548);
             this.Name = "Generators";
             this.Text = "Generators";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lenD)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -420,15 +490,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox texBoxP;
+        private System.Windows.Forms.TextBox textBoxP;
         private System.Windows.Forms.Button genP;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBoxE;
-        private System.Windows.Forms.Button genE;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBoxD;
-        private System.Windows.Forms.Button genD;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxQ;
         private System.Windows.Forms.Button genQ;
@@ -438,8 +502,19 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown lenD;
+        private System.Windows.Forms.TextBox textBoxD;
+        private System.Windows.Forms.Button genD;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBoxE;
+        private System.Windows.Forms.Button genE;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox textBoxN;
+        private System.Windows.Forms.Button genN;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox textBoxNN;
+        private System.Windows.Forms.Button genNN;
     }
 }
