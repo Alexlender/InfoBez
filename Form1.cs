@@ -46,6 +46,7 @@ namespace InfoBez
             while (true)
             {
                 socket.Listen(1);
+                AddLog($"Жду подключений...");
                 Socket client = await socket.AcceptAsync();
                 // получаем адрес клиента
                 var result = MessageBox.Show($"Принято входящее подключение\nIP {((IPEndPoint)client.RemoteEndPoint).Address}",
@@ -66,6 +67,7 @@ namespace InfoBez
             await Task.Run(() =>
             {
 
+                client.SendAsync(new ArraySegment<byte>(new byte[] { 1 }), SocketFlags.None);
 
                 var response = new byte[2048];
                 client.Receive(response);
@@ -73,7 +75,9 @@ namespace InfoBez
 
                 AddLog($"Получено число n = {n}\n");
 
-                client.SendAsync(new ArraySegment<byte>((n%8).ToByteArray()), SocketFlags.None);
+                int blockSize =  BytesFromBigInt(n).Length;
+
+                client.SendAsync(new ArraySegment<byte>((n % 8).ToByteArray()), SocketFlags.None);
 
 
                 var response2 = new byte[2048];
@@ -84,7 +88,7 @@ namespace InfoBez
 
                 client.SendAsync(new ArraySegment<byte>((e % 8).ToByteArray()), SocketFlags.None);
 
-                var list = ReadFile(textBoxFile.Text);
+                var list = ReadFile(textBoxFile.Text, blockSize - 1);
                 //var list = new List<byte[]>();
                 AddLog($"Подготовлен файл из {list.Count} блоков\n");
 
@@ -92,16 +96,17 @@ namespace InfoBez
                 client.Receive(new byte[16]);
 
 
-                foreach (var l in list)
+                foreach (var s in list)
                 {
-                    var s = new BigInteger(l);
-                    AddLog($"{s}\n");
-                    client.SendAsync(new ArraySegment<byte>(BigInteger.ModPow(s,e,n).ToByteArray()), SocketFlags.None);
-                    AddLog($"{BigInteger.ModPow(s,e,n)}\n");
+                    //var s = new BigInteger(l);
+                    //AddLog($"{s} -> {BigInteger.ModPow(s, e, n)} ({BytesFromBigInt(BigInteger.ModPow(s, e, n)).Length} B)\n");
+                    client.SendAsync(new ArraySegment<byte>(BytesFromBigInt(BigInteger.ModPow(s, e, n))), SocketFlags.None);
+                    //AddLog($"{BigInteger.ModPow(s, e, n)}\n");
                     client.Receive(new byte[16]);
                 }
-                AddLog($"Много байтов файла отправлено ({list.Count} блоков по 8 байт)\n");
-
+                AddLog($"Много байтов файла отправлено ({list.Count} блоков по {blockSize} байт)\n");
+                client.Disconnect(true);
+                AddLog($"Подключение закрыто\n\n");
             });
         }
 
@@ -122,6 +127,7 @@ namespace InfoBez
 
 
                 await LogicAsync(socket, n, d, e);
+
             }
             catch (FormatException)
             {
@@ -138,19 +144,15 @@ namespace InfoBez
             await Task.Run(() =>
             {
 
+                int blockSize = n.ToByteArray().Where(t => !(t == (byte)0 && t == n.ToByteArray().Last())).ToArray().Length;
 
-
-                BigInteger data = new BigInteger(12345);
-                AddLog($"d = {d}\n");
-
-                AddLog($"{BigInteger.ModPow(data,e,n)}\n");
-
-                AddLog($"{BigInteger.ModPow(BigInteger.ModPow(data, e, n),d,n)}\n");
+                var response = new byte[1];
+                socket.Receive(response);
 
                 socket.SendAsync(new ArraySegment<byte>(n.ToByteArray()), SocketFlags.None);
                 AddLog($"Отправлено число n = {n}\n");
 
-                var response = new byte[16];
+                response = new byte[16];
                 socket.Receive(response);
                 BigInteger answer = new BigInteger(response);
                 if (answer != n % 8)
@@ -172,69 +174,45 @@ namespace InfoBez
                 }
 
 
-                var list = new List<byte[]>();
+                var list = new List<BigInteger>();
 
-                response = new byte[16];
+                response = new byte[4096];
                 socket.Receive(response);
                 var count = new BigInteger(response);
-                AddLog($"Будет получено {count} блоков  текста\n");
-                socket.SendAsync(new ArraySegment<byte>(count.ToByteArray()), SocketFlags.None);
+                socket.SendAsync(new ArraySegment<byte>(new byte[] { 1 }), SocketFlags.None);
+                AddLog($"Будет получено {count} блоков текста по {blockSize} байт\n");
+
+
                 for (int i = 0; i < count; i++)
                 {
-                    response = new byte[2048];
+                    response = new byte[blockSize];
                     socket.Receive(response);
-                    var s = new BigInteger(response);
-                    AddLog($"{s}\n");
-                    list.Add(BigInteger.ModPow(s, d, n).ToByteArray());
-                    AddLog($"{BigInteger.ModPow(s, d, n)}\n");
+                    var s = new BigInteger(response.ToList().Append((byte)0).ToArray());
+                    list.Add(BigInteger.ModPow(s, d, n));
+                    //AddLog($"{s} -> {BigInteger.ModPow(s, d, n)}");
                     socket.SendAsync(new ArraySegment<byte>(e.ToByteArray()), SocketFlags.None);
                 }
 
-                
-      
+
+
                 AddLog($"Файл загружен в {LoadFile(list)}\n");
 
-
-
-                /*BigInteger anotherKey = new BigInteger(response);
-                AddLog($"Общий открытый ключ у соседа: {anotherKey}\n");
-                if (anotherKey == openKey)
-                {
-                    AddLog($"Ключи совпадают, всё хорошо\n");
-                }
-                else
-                {
-                    AddLog($"Ключи разные, щас их перемножим и найдём ближайшее большее просто число\n");
-                    openKey = KeyGen(anotherKey * openKey);
-                    AddLog($"Найденный ключ: {openKey}\n");
-                }
-                var a = new BigInteger(CustomHash(closeKey, openKey));
-                AddLog($"Мой открытый ключ: {a}\n");
-                socket.SendAsync(new ArraySegment<byte>(a.ToByteArray()), SocketFlags.None);
-
-                var response2 = new byte[512];
-                socket.Receive(response2);
-                BigInteger b = new BigInteger(response2);
-                AddLog($"Открытый ключ соседа: {b}\n");
-
-                var key = new BigInteger(CustomHash(a, b));
-                AddLog($"Получился ключ: {key}\n");
                 socket.Disconnect(true);
-                AddLog($"Подключение закрыто\n\n");*/
+                AddLog($"Подключение закрыто\n\n");
 
             });
 
         }
 
-        private List<byte[]> ReadFile(string path)
+        private List<BigInteger> ReadFile(string path, int blockSize)
         {
-            var list = new List<byte[]>();
+            var list = new List<BigInteger>();
             using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
             {
-                using (var reader = new BinaryReader(stream, Encoding.UTF8, false))
+                using (var reader = new BinaryReader(stream, Encoding.Unicode, false))
                 {
-                    while(stream.Position < stream.Length)
-                        list.Add(reader.ReadBytes(8));
+                    while (stream.Position < stream.Length)
+                        list.Add(new BigInteger((reader.ReadBytes(blockSize)).ToList().Append((byte)0).ToArray()));
                 }
             }
 
@@ -242,15 +220,15 @@ namespace InfoBez
 
         }
 
-        private string LoadFile(List<byte[]> list)
+        private string LoadFile(List<BigInteger> list)
         {
 
-            using (var stream = File.Open(textBoxFile.Text, FileMode.OpenOrCreate, FileAccess.Write))
+            using (var stream = File.Open(textBoxFile.Text, FileMode.Truncate, FileAccess.Write))
             {
-                using (var writer = new BinaryWriter(stream, Encoding.UTF8, false))
+                using (var writer = new BinaryWriter(stream, Encoding.Unicode, false))
                 {
                     foreach (var l in list)
-                        writer.Write(l);
+                        writer.Write(BytesFromBigInt(l)); 
                 }
             }
 
@@ -258,6 +236,13 @@ namespace InfoBez
 
         }
 
+
+        private byte[] BytesFromBigInt(BigInteger bg)
+        {
+
+            return bg.ToByteArray().Where(t => !(t == (byte)0 && t == bg.ToByteArray().Last())).ToArray(); //эта страшная штука убирает последний нулевой байт (знаковый (да, тут LE))
+
+        }
 
         private void AddLog(string text)
         {
@@ -273,9 +258,9 @@ namespace InfoBez
         private void KeyFileCheck()
         {
             if (!File.Exists("key.pub"))
-                    textBoxOpenKey.Text = "Файла ещё нет :(";
+                textBoxOpenKey.Text = "Файла ещё нет :(";
             else
-                    textBoxOpenKey.Text = Path.Combine(Application.StartupPath, "key.pub");
+                textBoxOpenKey.Text = Path.Combine(Application.StartupPath, "key.pub");
 
             if (!File.Exists("key"))
                 textBoxKey.Text = "Файла ещё нет :(";
@@ -287,7 +272,7 @@ namespace InfoBez
                 File.Create("File.dat");
             else
                 textBoxFile.Text = Path.Combine(Application.StartupPath, "File.dat");
-           
+
         }
 
         private void Connect(IPEndPoint iPEndPoint)
@@ -327,7 +312,7 @@ namespace InfoBez
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ОШИБКА ВСЁ НЕПРАВИЛЬНО!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + ex.Data, "ОШИБКА ВСЁ НЕПРАВИЛЬНО!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 AddLog("Подключение отклонено\n");
             }
         }
@@ -345,41 +330,18 @@ namespace InfoBez
 
         private List<BigInteger> Read(string filename)
         {
-            var list = new List<BigInteger>();  
+            var list = new List<BigInteger>();
             using (var stream = File.Open(filename, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = new BinaryReader(stream, Encoding.UTF8, false))
                 {
-                    for(int i = 0; i < 2; i++) //да, тут хардкодом забито 2. Мне очень лень делать считывание до конца файла
+                    for (int i = 0; i < 2; i++) //да, тут хардкодом забито 2. Мне очень лень делать считывание до конца файла
                         list.Add(BigInteger.Parse(reader.ReadString()));
                 }
             }
             return list;
         }
 
-
-        private long CustomHash(BigInteger x, BigInteger p)
-        {
-            return (int)((p ^ x) % 2147483647);
-        }
-
-        /*private async void Work(Button button)
-        {
-            isWorking = true;
-            await Task.Run(async () =>
-            {
-
-                for (int i = 0; isWorking; i = i == 3 ? 0 : i + 1)
-                {
-                    button.Text = "Думаю" + new string('.', i);
-                    await Task.Delay(400);
-                }
-
-                button.Text = "Генерировать";
-
-
-            });
-        }*/
 
         private void textOutput_Clear(object sender, EventArgs e)
         {
@@ -425,36 +387,7 @@ namespace InfoBez
             });
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string fromFile;
-                using (var stream = File.Open(textBoxFile.Text, FileMode.Open, FileAccess.Read))
-                {
-                    using (var reader = new BinaryReader(stream, Encoding.UTF8, false))
-                    {
-                        fromFile = reader.ReadString();
-                    }
-                }
-                File.WriteAllText(textBoxFile.Text, fromFile);
-            }
-            catch
-            {
-                string data = File.ReadAllText(textBoxFile.Text);
-                using (var stream = File.Open(textBoxFile.Text, FileMode.Open, FileAccess.ReadWrite))
-                {
-                    using (var writer = new BinaryWriter(stream, Encoding.UTF8, false))
-                    {
-                        writer.Write(data);
-                    }
-                }
-            }     
-        }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            ReadFile(textBoxFile.Text);
-        }
+      
     }
 }

@@ -244,7 +244,16 @@ namespace InfoBez
 
                 BigInteger k = Rand((uint)lenD.Value);
 
-                BigInteger d = (k * n + 1) / e;
+                BigInteger d;
+                BigInteger c;
+                do
+                {
+                    k += 1;
+                    d = (k * n + 1) / e;
+                    c = (k * n + 1) % e;
+
+                }
+                while (c != 0);
                 textBoxD.Text = d.ToString();
 
 

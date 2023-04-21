@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxKey = new System.Windows.Forms.TextBox();
             this.edit = new System.Windows.Forms.Button();
             this.textBoxFile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,9 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textOutput = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxKey = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -63,7 +62,6 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer2.Panel1.Controls.Add(this.button2);
             this.splitContainer2.Panel1.Controls.Add(this.label5);
             this.splitContainer2.Panel1.Controls.Add(this.textBoxKey);
             this.splitContainer2.Panel1.Controls.Add(this.edit);
@@ -90,6 +88,27 @@
             this.splitContainer2.Size = new System.Drawing.Size(842, 459);
             this.splitContainer2.SplitterDistance = 298;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label5.Location = new System.Drawing.Point(563, 39);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(180, 17);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Файл с закрытым ключом";
+            // 
+            // textBoxKey
+            // 
+            this.textBoxKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxKey.Location = new System.Drawing.Point(566, 58);
+            this.textBoxKey.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxKey.Name = "textBoxKey";
+            this.textBoxKey.Size = new System.Drawing.Size(206, 23);
+            this.textBoxKey.TabIndex = 28;
             // 
             // edit
             // 
@@ -239,38 +258,6 @@
             this.textOutput.TabIndex = 0;
             this.textOutput.DoubleClick += new System.EventHandler(this.textOutput_Clear);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(563, 39);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(180, 17);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Файл с закрытым ключом";
-            // 
-            // textBoxKey
-            // 
-            this.textBoxKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxKey.Location = new System.Drawing.Point(566, 58);
-            this.textBoxKey.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxKey.Name = "textBoxKey";
-            this.textBoxKey.Size = new System.Drawing.Size(206, 23);
-            this.textBoxKey.TabIndex = 28;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button2.Location = new System.Drawing.Point(594, 165);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 30);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Править";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,7 +298,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxKey;
-        private System.Windows.Forms.Button button2;
     }
 }
 
